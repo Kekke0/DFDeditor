@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Scenebuilder">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Flow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Layer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/MultipliableObjects.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diagrams/Classdia.dia" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diagrams/Classdia.dia" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diagrams/Classdia.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diagrams/Classdia.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,7 +44,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2BtHUL0NJi0oxOAUYenUQ2LtE7j" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,7 +58,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_directory_selection": "C:/Users/Kekke/DFDeditor/theApplication/DFDeditor/src/main/java/com/openjfx/dfdeditor",
-    "last_opened_file_path": "D:/IDEAprojects/Kötprog5",
+    "last_opened_file_path": "C:/Users/Kekke/DFDeditor/theApplication/DFDeditor",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.JavaFX"
   }
@@ -100,6 +112,7 @@
       <workItem from="1657796108821" duration="7488000" />
       <workItem from="1658236395005" duration="2042000" />
       <workItem from="1661084729217" duration="1548000" />
+      <workItem from="1665411050391" duration="10622000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX start">
       <created>1657747635984</created>
