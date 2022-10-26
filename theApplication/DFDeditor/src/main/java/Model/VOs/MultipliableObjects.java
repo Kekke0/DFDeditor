@@ -5,12 +5,12 @@ import Model.Coordinate;
 public class MultipliableObjects extends VisualObject{
     private boolean Multiplied;
 
-    public MultipliableObjects(Coordinate[] corners) {
-        super(corners);
+    public MultipliableObjects(String ID, Coordinate[] corners) {
+        super(ID, corners);
     }
 
-    public MultipliableObjects(Coordinate[] corners, boolean multiplied) {
-        super(corners);
+    public MultipliableObjects(String ID, Coordinate[] corners, boolean multiplied) {
+        super(ID, corners);
         Multiplied = multiplied;
     }
 }

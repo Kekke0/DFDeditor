@@ -3,11 +3,12 @@ package Model.VOs;
 import Model.Coordinate;
 
 public class DataBase extends MultipliableObjects{
-    public DataBase(Coordinate[] corners) {
-        super(corners);
+
+    public DataBase(String ID, Coordinate[] corners) {
+        super(ID, corners);
     }
 
-    public DataBase(Coordinate[] corners, boolean multiplied) {
-        super(corners, multiplied);
+    public DataBase(String ID, Coordinate[] corners, boolean multiplied) {
+        super(ID, corners, multiplied);
     }
 }

@@ -8,8 +8,9 @@ public class Process extends VisualObject{
     private boolean Dissociable;
     private Layer LowerLayer;
 
-    public Process(Coordinate[] corners) {
-        super(corners);
+    public Process(String ID, Coordinate[] corners) {
+        super(ID, corners);
+        setDissociable(false);
     }
 
     public String getOrgUnit() {
@@ -33,6 +34,16 @@ public class Process extends VisualObject{
     }
 
     public void setLowerLayer(Layer lowerLayer) {
+        setDissociable(true);
         LowerLayer = lowerLayer;
+    }
+
+    @Override
+    public void showConsol() {
+        super.showConsol();
+        if (isDissociable()) {
+            System.out.print(": \n");
+            getLowerLayer().consolShow();
+        }
     }
 }

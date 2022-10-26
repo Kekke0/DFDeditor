@@ -3,11 +3,12 @@ package Model.VOs;
 import Model.Coordinate;
 
 public class ExternalElement extends MultipliableObjects{
-    public ExternalElement(Coordinate[] corners) {
-        super(corners);
+
+    public ExternalElement(String ID, Coordinate[] corners) {
+        super(ID, corners);
     }
 
-    public ExternalElement(Coordinate[] corners, boolean multiplied) {
-        super(corners, multiplied);
+    public ExternalElement(String ID, Coordinate[] corners, boolean multiplied) {
+        super(ID, corners, multiplied);
     }
 }

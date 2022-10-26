@@ -3,16 +3,13 @@ package Model.VOs;
 import Model.Coordinate;
 
 public class VisualObject {
-    private String ID, Name;
+    private String ID;
+    private String VisualID;
+    private String Name;
     private Coordinate[] Corners= new Coordinate[4];
 
-    public VisualObject(Coordinate[] corners) {
-        Corners = corners;
-    }
-
-    public VisualObject(String ID, String name, Coordinate[] corners) {
+    public VisualObject(String ID, Coordinate[] corners) {
         this.ID = ID;
-        Name = name;
         Corners = corners;
     }
 
@@ -54,5 +51,7 @@ public class VisualObject {
         }
     }
 
+    public void showConsol(){
 
+    }
 }

@@ -3,6 +3,11 @@ package Model;
 public class Coordinate {
     private int X, Y;
 
+    public Coordinate() {
+        X = 0;
+        Y = 0;
+    }
+
     public Coordinate(int x, int y) {
         X = x;
         Y = y;

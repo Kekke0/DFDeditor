@@ -1,19 +1,31 @@
 package Model;
 
 public class Flow {
+
+    private String ID;
     private String Name;
     private String[] Connected= new String[2];
     private Coordinate Start, End;
 
-    public Flow(Coordinate start, Coordinate end) {
+    public Flow(String ID, Coordinate start, Coordinate end) {
+        this.ID = ID;
         Start = start;
         End = end;
     }
 
-    public Flow(Coordinate start, Coordinate end, String[] connected) {
-        setConnected(connected);
+    public Flow(String ID, String[] connected, Coordinate start, Coordinate end) {
+        this.ID = ID;
+        Connected = connected;
         Start = start;
         End = end;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getName() {
