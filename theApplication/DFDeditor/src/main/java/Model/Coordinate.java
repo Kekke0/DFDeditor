@@ -1,31 +1,31 @@
 package Model;
 
 public class Coordinate {
-    private int X, Y;
+    private double X, Y;
 
     public Coordinate() {
         X = 0;
         Y = 0;
     }
 
-    public Coordinate(int x, int y) {
+    public Coordinate(double x, double y) {
         X = x;
         Y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return X;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         X = x;
     }
 
-    public int getY() {
+    public double getY() {
         return Y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         Y = y;
     }
 

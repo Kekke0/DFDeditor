@@ -5,7 +5,9 @@ public class Flow {
     private String ID;
     private String Name;
     private String[] Connected= new String[2];
-    private Coordinate Start, End;
+    private Coordinate Start;
+    private Coordinate End;
+    private Boolean onesieded= false;
 
     public Flow(String ID, Coordinate start, Coordinate end) {
         this.ID = ID;
@@ -22,6 +24,14 @@ public class Flow {
 
     public String getID() {
         return ID;
+    }
+
+    public Boolean isOnesieded() {
+        return onesieded;
+    }
+
+    public void setOnesieded(Boolean onesieded) {
+        this.onesieded = onesieded;
     }
 
     public void setID(String ID) {

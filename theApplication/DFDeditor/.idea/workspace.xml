@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Model update és megvalósítás">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ModelTest/TestMain.java" afterDir="false" />
+    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Database Visuals">
+      <change beforePath="$PROJECT_DIR$/../../Diagrams/Classdia.dia" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diagrams/Classdia.dia" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Diagrams/Classdia.dia.autosave" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Flow.java" afterDir="false" />
@@ -15,6 +16,11 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/MultipliableObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/MultipliableObjects.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ModelTest/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ModelTest/TestMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +77,7 @@
       <recent name="com.openjfx.dfdeditor" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestMain">
+  <component name="RunManager" selected="Application.com.openjfx.dfdeditor.Main">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.openjfx.dfdeditor.HelloApplication" />
       <module name="DFDeditor" />
@@ -107,8 +113,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestMain" />
         <item itemvalue="Application.com.openjfx.dfdeditor.Main" />
+        <item itemvalue="Application.TestMain" />
         <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
@@ -127,7 +133,14 @@
       <workItem from="1661084729217" duration="1548000" />
       <workItem from="1665411050391" duration="10622000" />
       <workItem from="1665577317354" duration="1438000" />
-      <workItem from="1666686196587" duration="10333000" />
+      <workItem from="1666686196587" duration="11723000" />
+      <workItem from="1667674703180" duration="806000" />
+      <workItem from="1667764843067" duration="6412000" />
+      <workItem from="1669040420799" duration="2038000" />
+      <workItem from="1671567044124" duration="1250000" />
+      <workItem from="1672776421932" duration="1692000" />
+      <workItem from="1672851019534" duration="17314000" />
+      <workItem from="1673029309611" duration="9628000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX start">
       <created>1657747635984</created>
@@ -150,7 +163,21 @@
       <option name="project" value="LOCAL" />
       <updated>1665577391355</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Model megvalósítás és classdia update">
+      <created>1666787594736</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666787594736</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Database Visuals">
+      <created>1672860026404</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672860026404</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +198,9 @@
     <MESSAGE value="JavaFX start" />
     <MESSAGE value="Scenebuilder" />
     <MESSAGE value="Model update és megvalósítás" />
-    <option name="LAST_COMMIT_MESSAGE" value="Model update és megvalósítás" />
+    <MESSAGE value="Model megvalósítás és classdia update" />
+    <MESSAGE value="Database Visuals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Database Visuals" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

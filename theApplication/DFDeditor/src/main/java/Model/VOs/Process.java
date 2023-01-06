@@ -8,8 +8,8 @@ public class Process extends VisualObject{
     private boolean Dissociable;
     private Layer LowerLayer;
 
-    public Process(String ID, Coordinate[] corners) {
-        super(ID, corners);
+    public Process(String ID, Coordinate maincorner) {
+        super(ID, maincorner);
         setDissociable(false);
     }
 

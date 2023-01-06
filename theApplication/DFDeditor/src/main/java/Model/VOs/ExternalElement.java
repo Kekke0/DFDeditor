@@ -4,11 +4,11 @@ import Model.Coordinate;
 
 public class ExternalElement extends MultipliableObjects{
 
-    public ExternalElement(String ID, Coordinate[] corners) {
-        super(ID, corners);
+    public ExternalElement(String ID, Coordinate maincorner) {
+        super(ID, maincorner);
     }
 
-    public ExternalElement(String ID, Coordinate[] corners, boolean multiplied) {
-        super(ID, corners, multiplied);
+    public ExternalElement(String ID, Coordinate maincorner, boolean multiplied) {
+        super(ID, maincorner, multiplied);
     }
 }

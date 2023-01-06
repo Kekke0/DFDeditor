@@ -1,25 +1,39 @@
 package Model;
 
 import Model.VOs.VisualObject;
-import javafx.application.Preloader;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.DefaultProperty;
+import javafx.scene.Node;
+import javafx.scene.layout.Pane;
 
-import java.net.Proxy;
-import java.security.SignedObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Layer {
+@DefaultProperty("children")
+public class Layer extends Pane{
+
+    private Layer parentLayer_;
     private int Level;
     private final List<VisualObject> VOs=new ArrayList<>();
     private final List<Flow> Flows=new ArrayList<>();
 
-    public Layer(int level) {
-        Level = level;
+    public Layer() {
+        super();
+    }
+
+    public Layer(Node... nodes) {
+        super(nodes);
+    }
+
+    public Layer getParentLayer_() {
+        return parentLayer_;
+    }
+
+    public void setParentLayer_(Layer parentLayer_) {
+        this.parentLayer_ = parentLayer_;
     }
 
     public void setLevel(int level) {
-        Level = level;
+        this.Level = level;
     }
 
     public int getLevel() {
@@ -29,6 +43,7 @@ public class Layer {
 
     public void addVO(VisualObject vo){
         VOs.add(vo);
+        this.getChildren().add(vo.getImageView());
     }
 
     public void removeVO(VisualObject rvo){
@@ -49,6 +64,16 @@ public class Layer {
             i++;
         }
         if (i<Flows.size()) Flows.remove(i);
+    }
+
+    public void reDraw(){
+        this.getChildren().removeAll();
+        for (VisualObject VO: VOs) {
+            this.getChildren().add(VO.getImageView());
+        }
+        for (Flow fl: Flows) {
+            //TODO
+        }
     }
 
     public void consolShow(){
