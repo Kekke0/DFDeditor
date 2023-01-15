@@ -9,8 +9,8 @@ public class Coordinate {
     }
 
     public Coordinate(double x, double y) {
-        X = x;
-        Y = y;
+        setX(x);
+        setY(y);
     }
 
     public double getX() {
@@ -30,8 +30,13 @@ public class Coordinate {
     }
 
     public void add(Coordinate distance){
-        this.setX(X+distance.getX());
-        this.setY(Y+distance.getY());
+        this.setX(this.X+distance.getX());
+        this.setY(this.Y+distance.getY());
+    }
+
+    public void reverse(){
+        this.setX(getX() * -1);
+        this.setY(getY() * -1);
     }
 
 }

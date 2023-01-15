@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Database Visuals">
-      <change beforePath="$PROJECT_DIR$/../../Diagrams/Classdia.dia" beforeDir="false" afterPath="$PROJECT_DIR$/../../Diagrams/Classdia.dia" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Diagrams/Classdia.dia.autosave" beforeDir="false" />
+    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Making the basic drawing mechanics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Flow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Layer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/MultipliableObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/MultipliableObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ModelTest/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ModelTest/TestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +130,10 @@
       <workItem from="1671567044124" duration="1250000" />
       <workItem from="1672776421932" duration="1692000" />
       <workItem from="1672851019534" duration="17314000" />
-      <workItem from="1673029309611" duration="9628000" />
+      <workItem from="1673029309611" duration="10533000" />
+      <workItem from="1673084520301" duration="12998000" />
+      <workItem from="1673374154437" duration="7697000" />
+      <workItem from="1673448380541" duration="11788000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX start">
       <created>1657747635984</created>
@@ -177,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672860026404</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Making the basic drawing mechanics">
+      <created>1673039527618</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1673039527618</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,7 +200,8 @@
     <MESSAGE value="Model update és megvalósítás" />
     <MESSAGE value="Model megvalósítás és classdia update" />
     <MESSAGE value="Database Visuals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Database Visuals" />
+    <MESSAGE value="Making the basic drawing mechanics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Making the basic drawing mechanics" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
