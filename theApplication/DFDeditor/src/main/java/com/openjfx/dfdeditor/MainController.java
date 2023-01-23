@@ -1,18 +1,22 @@
 package com.openjfx.dfdeditor;
 
 import Model.Coordinate;
+import Model.EditinStage;
 import Model.Layer;
 import Model.VOs.DataBase;
+import Model.VOs.ExternalElement;
+import Model.VOs.Process;
 import Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class MainController {
@@ -22,9 +26,16 @@ public class MainController {
     private Coordinate grabPosition;
     private boolean dragging;
     @FXML
+    public Button externaladd;
+    @FXML
+    public Button processadd;
+    @FXML
     public Button dataadd;
     @FXML
     public Layer Drawable;
+
+    @FXML
+    private Scene scene_;
 
     public void setTool(String tool) {
         this.Tool = tool;
@@ -47,24 +58,59 @@ public class MainController {
         setPreviewVO(new DataBase(Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
     }
 
+    public void processAdder(ActionEvent e) {
+        setTool("ProcessAdder");
+        setPreviewVO(new Process(Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
+    }
+    public void extrnalAdder(ActionEvent e) {
+        setTool("ExternalAdder");
+        setPreviewVO(new ExternalElement(Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
+    }
+
     public void setEventHandlers(){
         Drawable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                switch (getTool()){
-                    case "Databadder"->{
-                        DataBase dtb = new DataBase(Drawable.getLevel()+"sa", new Coordinate(mouseEvent.getX(),mouseEvent.getY()));
-                        Drawable.addVO(dtb);
-                        Drawable.setSeleccted(dtb);
+                if (mouseEvent.getButton()== MouseButton.PRIMARY) {
+                    switch (getTool()) {
+                        case "Databadder" -> {
+                            DataBase dtb = new DataBase(Drawable.getLevel() + "sa", new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
+                            Drawable.addVO(dtb);
+                            Drawable.setSeleccted(dtb);
 
-                        Drawable.getChildren().remove(getPreviewVO().getImageView());
-                        setTool("Mouse");
-                    }
-                    case "Mouse"->{
-                        Drawable.Select(mouseEvent.getX(),mouseEvent.getY());
-                    }
-                    default -> {
+                            Drawable.getChildren().remove(getPreviewVO().getImageView());
+                            setTool("Mouse");
+                        }
+                        case "ExternalAdder" -> {
+                            ExternalElement extel = new ExternalElement(Drawable.getLevel() + "sa", new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
+                            Drawable.addVO(extel);
+                            Drawable.setSeleccted(extel);
 
+                            Drawable.getChildren().remove(getPreviewVO().getImageView());
+                            setTool("Mouse");
+                        }
+                        case "ProcessAdder" -> {
+                            Process proc = new Process(Drawable.getLevel() + "sa", new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
+                            Drawable.addVO(proc);
+                            Drawable.setSeleccted(proc);
+
+                            Drawable.getChildren().remove(getPreviewVO().getImageView());
+                            setTool("Mouse");
+                        }
+                        case "Mouse" -> {
+                            Drawable.Select(mouseEvent.getX(), mouseEvent.getY());
+                        }
+                        default -> {
+
+                        }
+                    }
+                } else if (mouseEvent.getButton()==MouseButton.SECONDARY){
+                    if(Drawable.getSeleccted().isInside(mouseEvent.getX(), mouseEvent.getY())){
+                        try {
+                            EditinStage editinStage = new EditinStage(Drawable.getSeleccted());
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
             }
@@ -74,14 +120,13 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 switch (getTool()){
-                    case "Databadder"->{
-                        getPreviewVO().ChangePosition(new Coordinate(mouseEvent.getX(),mouseEvent.getY()));
-                    }
-                    case "Mouse"->{
-                    }
-                    default -> {
 
-                    }
+                    case "ExternalAdder":
+                    case "ProcessAdder":
+                    case "Databadder":
+                        getPreviewVO().ChangePosition(new Coordinate(mouseEvent.getX(),mouseEvent.getY()));
+                        break;
+                    default :
                 }
             }
         });
@@ -111,8 +156,6 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 switch (getTool()){
-                    case "Databadder"->{
-                    }
                     case "Mouse"->{
                         if (Drawable.getSeleccted()!=null){
                             if (Drawable.getSeleccted().isInside(mouseEvent.getX(), mouseEvent.getY())) {
@@ -181,6 +224,7 @@ public class MainController {
     }
 
     public void setKeyBindings(Scene scene) {
+        this.scene_=scene;
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {

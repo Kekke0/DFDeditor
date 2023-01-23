@@ -17,6 +17,10 @@
                BorderPane.alignment="CENTER">
             <Button fx:id="dataadd" onAction="#databadder" layoutX="37.0" layoutY="26.0" mnemonicParsing="false"
                     prefHeight="37.0" prefWidth="81.0" text="Database"/>
+            <Button fx:id="externaladd" onAction="#extrnalAdder" layoutX="37.0" layoutY="76.0" mnemonicParsing="false"
+                    prefHeight="37.0" prefWidth="81.0" text="External Element"/>
+            <Button fx:id="processadd" onAction="#processAdder" layoutX="37.0" layoutY="126.0" mnemonicParsing="false"
+                    prefHeight="37.0" prefWidth="81.0" text="Process"/>
          </Pane>
       </left>
 

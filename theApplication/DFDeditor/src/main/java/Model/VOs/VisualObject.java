@@ -1,18 +1,25 @@
 package Model.VOs;
 
 import Model.Coordinate;
+import Model.Layer;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 
 import java.net.PortUnreachableException;
 import java.util.Objects;
 
 public class VisualObject {
     private ImageView imageView_;
+    private Layer Parent_;
     private String ID;
     private String VisualID;
     private String Name;
     private Coordinate[] Corners= new Coordinate[4];
+
+    private Text[] Texts;
 
     public VisualObject(String ID, Coordinate maincorner) {
         this.ID = ID;
@@ -20,6 +27,14 @@ public class VisualObject {
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(getImagePath())));
         imageView_ = new ImageView(image);
         resizeImageView();
+    }
+
+    public Text[] getTexts() {
+        return Texts;
+    }
+
+    public void setTexts(Text[] texts) {
+        Texts = texts;
     }
 
     public String getImagePath() {
@@ -65,8 +80,10 @@ public class VisualObject {
 
     }
 
-
-
+    public void setImage() {
+        Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(getImagePath())));
+        imageView_.setImage(image);
+    }
 
     public void ChangePosition(Coordinate maincorner) {
         if (maincorner.getX()<0) maincorner.setX(0);
@@ -106,7 +123,6 @@ public class VisualObject {
                 if (y<= getCorners()[2].getY()-50){
                     getCorners()[1].setY(getCorners()[1].getY()+distance.getY());
                     getCorners()[corner].setY(y);
-
                 }
                 if(x<=getCorners()[1].getX()-50) {
                     getCorners()[2].setX(getCorners()[2].getX() + distance.getX());
@@ -151,5 +167,17 @@ public class VisualObject {
 
 
         resizeImageView();
+    }
+
+    public ContextMenu getContextMenu(){
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem Edit = new MenuItem("Edit");
+
+        contextMenu.getItems().addAll(Edit);
+        return contextMenu;
+    }
+
+    public String getTypeString(){
+        return "VO";
     }
 }

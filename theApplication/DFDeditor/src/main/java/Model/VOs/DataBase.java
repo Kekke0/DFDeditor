@@ -33,6 +33,10 @@ public class DataBase extends MultipliableObjects{
             return "/VObjects/MultirDBvID.png";
         return "/VObjects/DBvID.png";
     }
+    @Override
+    public String getTypeString(){
+        return "DB";
+    }
 
 
 }

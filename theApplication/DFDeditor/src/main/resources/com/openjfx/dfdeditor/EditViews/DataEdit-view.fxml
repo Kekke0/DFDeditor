@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="289.0" prefWidth="342.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.EditConrollers.DataeditController">
+   <children>
+      <CheckBox fx:id="MultyBox" contentDisplay="RIGHT" layoutX="90.0" layoutY="179.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="162.0" text="Multiplyable" AnchorPane.rightAnchor="89.6">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="IDField" layoutX="159.0" layoutY="69.0" />
+      <TextField fx:id="NameField" layoutX="159.0" layoutY="132.0" />
+      <Text layoutX="62.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="46.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="Cancel" layoutX="35.0" layoutY="250.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="98.0" text="Cancel" onAction="#onCancel">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="Apply" layoutX="190.0" layoutY="250.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="97.0" text="Apply" onAction="#onApply">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Text layoutX="85.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editing Database">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

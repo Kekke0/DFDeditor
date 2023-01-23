@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Making the basic drawing mechanics">
+    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Making the resieze and delete mechanics">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/EditinStage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/DataeditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ExternalEditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/FlowEditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ProcessEditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/UEditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/DataEdit-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/ExternalEdit-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/FlowEdit-View.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/ProcessEdit-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/UEdit-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Coordinate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +73,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kekke\DFDeditor\theApplication\DFDeditor\src\main\resources\com\openjfx\dfdeditor\EditViews" />
       <recent name="C:\Users\Kekke\DFDeditor\theApplication\DFDeditor\src\main\resources\Icons" />
       <recent name="C:\Users\Kekke\DFDeditor\theApplication\DFDeditor\src\main\resources" />
     </key>
@@ -73,7 +87,7 @@
       <module name="DFDeditor" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.openjfx.dfdeditor.*" />
+          <option name="PATTERN" value="com.openjfx.dfdeditor.EditConrollers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,7 +119,6 @@
       <list>
         <item itemvalue="Application.com.openjfx.dfdeditor.Main" />
         <item itemvalue="Application.TestMain" />
-        <item itemvalue="Application.HelloApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -133,7 +146,10 @@
       <workItem from="1673029309611" duration="10533000" />
       <workItem from="1673084520301" duration="12998000" />
       <workItem from="1673374154437" duration="7697000" />
-      <workItem from="1673448380541" duration="11788000" />
+      <workItem from="1673448380541" duration="12689000" />
+      <workItem from="1674151808417" duration="16612000" />
+      <workItem from="1674424051609" duration="28000" />
+      <workItem from="1674509739705" duration="4601000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX start">
       <created>1657747635984</created>
@@ -177,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673039527618</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Making the resieze and delete mechanics">
+      <created>1673778710095</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1673778710095</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,7 +224,8 @@
     <MESSAGE value="Model megvalósítás és classdia update" />
     <MESSAGE value="Database Visuals" />
     <MESSAGE value="Making the basic drawing mechanics" />
-    <option name="LAST_COMMIT_MESSAGE" value="Making the basic drawing mechanics" />
+    <MESSAGE value="Making the resieze and delete mechanics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Making the resieze and delete mechanics" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
