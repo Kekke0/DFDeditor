@@ -1,10 +1,7 @@
 package Model;
 
 import Model.VOs.VisualObject;
-import com.openjfx.dfdeditor.EditConrollers.DataeditController;
-import com.openjfx.dfdeditor.EditConrollers.ExternalEditController;
-import com.openjfx.dfdeditor.EditConrollers.ProcessEditController;
-import com.openjfx.dfdeditor.EditConrollers.UEditController;
+import com.openjfx.dfdeditor.EditConrollers.*;
 import com.openjfx.dfdeditor.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,7 +43,16 @@ public class EditinStage extends Stage {
                 ExternalEditController controller = loader.getController();
                 controller.addStage(this);
                 controller.setEdited(EditedVO);}
-            default -> {}
+            case "FL" ->{
+                FlowEditController controller = loader.getController();
+                controller.addStage(this);
+                controller.setEdited(EditedVO);}
+            default -> {
+                UEditController controller;
+                controller = loader.getController();
+                controller.addStage(this);
+                controller.setEdited(EditedVO);
+            }
         }
     }
 
@@ -55,6 +61,7 @@ public class EditinStage extends Stage {
             case "DB" ->{ return "/com/openjfx/dfdeditor/EditViews/DataEdit-view.fxml";}
             case "EE" ->{return "/com/openjfx/dfdeditor/EditViews/ExternalEdit-view.fxml";}
             case "PR" ->{return "/com/openjfx/dfdeditor/EditViews/ProcessEdit-view.fxml";}
+            case "FL" ->{return "/com/openjfx/dfdeditor/EditViews/FlowEdit-view.fxml";}
             default -> {return "/com/openjfx/dfdeditor/EditViews/UEdit-view.fxml";}
         }
     }

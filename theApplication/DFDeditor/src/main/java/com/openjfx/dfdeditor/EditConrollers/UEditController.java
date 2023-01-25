@@ -30,6 +30,8 @@ public class UEditController {
     }
     public void setEdited(VisualObject vo){
         Edited = vo;
+        IDField.setText(Edited.getID());
+        NameField.setText(Edited.getName());
     }
 
     public void onApply(ActionEvent e) {

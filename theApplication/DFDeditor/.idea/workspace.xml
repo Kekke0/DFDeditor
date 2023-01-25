@@ -4,26 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Making the resieze and delete mechanics">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/EditinStage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/DataeditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ExternalEditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/FlowEditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ProcessEditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/UEditController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/DataEdit-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/ExternalEdit-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/FlowEdit-View.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/ProcessEdit-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/UEdit-view.fxml" afterDir="false" />
+    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Major update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EditinStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EditinStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Flow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/ExternalElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/DataeditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/DataeditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/FlowEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/FlowEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/UEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/UEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/HelloController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/VObjects/DBvID.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/VObjects/DBvID.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/VObjects/Database.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/VObjects/Database.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/VObjects/MultirDBvID.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/VObjects/MultirDBvID.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/FlowEdit-View.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/EditViews/FlowEdit-View.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +43,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/HelloApplication.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/HelloController.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/module-info.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/hello-view.fxml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -78,6 +76,7 @@
       <recent name="C:\Users\Kekke\DFDeditor\theApplication\DFDeditor\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Model" />
       <recent name="com.openjfx.dfdeditor" />
     </key>
   </component>
@@ -149,7 +148,7 @@
       <workItem from="1673448380541" duration="12689000" />
       <workItem from="1674151808417" duration="16612000" />
       <workItem from="1674424051609" duration="28000" />
-      <workItem from="1674509739705" duration="4601000" />
+      <workItem from="1674509739705" duration="34588000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX start">
       <created>1657747635984</created>
@@ -200,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673778710095</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Major update">
+      <created>1674517637492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1674517637492</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +231,8 @@
     <MESSAGE value="Database Visuals" />
     <MESSAGE value="Making the basic drawing mechanics" />
     <MESSAGE value="Making the resieze and delete mechanics" />
-    <option name="LAST_COMMIT_MESSAGE" value="Making the resieze and delete mechanics" />
+    <MESSAGE value="Major update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,6 +1,7 @@
 package Model.VOs;
 
 import Model.Coordinate;
+import javafx.scene.text.Font;
 
 public class ExternalElement extends MultipliableObjects{
 
@@ -31,5 +32,11 @@ public class ExternalElement extends MultipliableObjects{
     @Override
     public String getTypeString(){
         return "EE";
+    }
+
+    protected void placeTexts() {
+        getTexts()[1].setFont(new Font(20));
+        getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())/3);
+        getTexts()[1].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY()-this.getCorners()[0].getY())/1.5);
     }
 }

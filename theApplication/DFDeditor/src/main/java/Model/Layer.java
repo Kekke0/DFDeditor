@@ -1,11 +1,14 @@
 package Model;
 
+import Model.VOs.Flow;
 import Model.VOs.VisualObject;
 import javafx.beans.DefaultProperty;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +21,7 @@ public class Layer extends Pane{
     private Rectangle cornersGui_[];
     private final List<VisualObject> VOs=new ArrayList<>();
     private final List<Flow> Flows=new ArrayList<>();
-    private VisualObject seleccted_;
+    private VisualObject selected_;
 
     public Layer() {
         super();
@@ -46,26 +49,45 @@ public class Layer extends Pane{
         return Level;
     }
 
-    public VisualObject getSeleccted() {
-        return seleccted_;
+    public VisualObject getSelected() {
+        return selected_;
     }
 
-    public void setSeleccted(VisualObject seleccted) {
+    public void setSelected(VisualObject seleccted) {
         if(seleccted==null){
             for (int i = 0; i < 4; i++) {
                 this.getChildren().remove(cornersGui_[i]);
             }
-            this.seleccted_=seleccted;
+            this.selected_ =seleccted;
             return;
         }
 
-        if (seleccted_==null) {
+        if (selected_ ==null) {
             this.getChildren().add(cornersGui_[0]);
             this.getChildren().add(cornersGui_[1]);
             this.getChildren().add(cornersGui_[2]);
             this.getChildren().add(cornersGui_[3]);
         }
-        this.seleccted_=seleccted;
+        this.selected_ =seleccted;
+        AlignGuiToCorners();
+    }
+
+    public void setSelected(Flow seleccted) {
+        if(seleccted==null){
+            for (int i = 0; i < 4; i++) {
+                this.getChildren().remove(cornersGui_[i]);
+            }
+            this.selected_ =seleccted;
+            return;
+        }
+
+        if (selected_ ==null) {
+            this.getChildren().add(cornersGui_[0]);
+            this.getChildren().add(cornersGui_[1]);
+            this.getChildren().add(cornersGui_[2]);
+            this.getChildren().add(cornersGui_[3]);
+        }
+        this.selected_ =seleccted;
         AlignGuiToCorners();
     }
 
@@ -80,49 +102,82 @@ public class Layer extends Pane{
     }
 
     private void AlignGuiToCorners() {
-        cornersGui_[0].setX(seleccted_.getCorners()[0].getX()-5);
-        cornersGui_[0].setY(seleccted_.getCorners()[0].getY()-5);
-        cornersGui_[1].setX(seleccted_.getCorners()[1].getX()+5);
-        cornersGui_[1].setY(seleccted_.getCorners()[1].getY()-5);
-        cornersGui_[2].setX(seleccted_.getCorners()[2].getX()-5);
-        cornersGui_[2].setY(seleccted_.getCorners()[2].getY()+5);
-        cornersGui_[3].setX(seleccted_.getCorners()[3].getX()+5);
-        cornersGui_[3].setY(seleccted_.getCorners()[3].getY()+5);
+        if (selected_.getTypeString().equals("FL")){
+            cornersGui_[0].setX(selected_.getCorners()[0].getX()-5);
+            cornersGui_[0].setY(selected_.getCorners()[0].getY()-5);
+            cornersGui_[1].setX(selected_.getCorners()[1].getX()+5);
+            cornersGui_[1].setY(selected_.getCorners()[1].getY()-5);
+            cornersGui_[2].setVisible(false);
+            cornersGui_[3].setVisible(false);
+            return;
+        }
+        cornersGui_[2].setVisible(true);
+        cornersGui_[3].setVisible(true);
+        cornersGui_[0].setX(selected_.getCorners()[0].getX()-5);
+        cornersGui_[0].setY(selected_.getCorners()[0].getY()-5);
+        cornersGui_[1].setX(selected_.getCorners()[1].getX()+5);
+        cornersGui_[1].setY(selected_.getCorners()[1].getY()-5);
+        cornersGui_[2].setX(selected_.getCorners()[2].getX()-5);
+        cornersGui_[2].setY(selected_.getCorners()[2].getY()+5);
+        cornersGui_[3].setX(selected_.getCorners()[3].getX()+5);
+        cornersGui_[3].setY(selected_.getCorners()[3].getY()+5);
+    }
 
-        cornersGui_[0].setFill(Color.BLUE);
+    private void addTexts(VisualObject vo){
+        for (Text votext : vo.getTexts()) {
+            this.getChildren().add(votext);
+        }
+    }
+
+    private void removeTexts(VisualObject vo){
+        for (Text votext : vo.getTexts()) {
+            this.getChildren().remove(votext);
+        }
     }
 
     public void addVO(VisualObject vo){
         VOs.add(vo);
         this.getChildren().add(vo.getImageView());
+        this.addTexts(vo);
     }
 
     public void removeVO(VisualObject rvo){
         this.getChildren().remove(rvo.getImageView());
+        this.removeTexts(rvo);
         VOs.remove(rvo);
     }
 
     public void addFlow(Flow flow){
         Flows.add(flow);
+        for (Line line: flow.getimage()) {
+            this.getChildren().add(line);
+        }
+        this.addTexts(flow);
     }
 
     public void removeFlow(Flow rf){
-        int i=0;
-        while (i<Flows.size()&&Flows.get(i)!=rf){
-            i++;
+        for (Line line: rf.getimage()) {
+            this.getChildren().remove(line);
         }
-        if (i<Flows.size()) Flows.remove(i);
+        this.removeTexts(rf);
+        Flows.remove(rf);
     }
 
     public void Select(double x, double y) {
-        if(seleccted_!=null &&seleccted_.isInside(x,y)) return;
-        for (VisualObject VO: VOs) {
-            if (VO.isInside(x,y)){
-                setSeleccted(VO);
+        if(selected_ !=null && selected_.isInside(x,y)) return;
+        for (Flow FL: Flows) {
+            if (FL.isInside(x,y)){
+                setSelected(FL);
                 return;
             }
         }
-        setSeleccted(null);
+        for (VisualObject VO: VOs) {
+            if (VO.isInside(x,y)){
+                setSelected(VO);
+                return;
+            }
+        }
+        setSelected(null);
     }
 
     private void initailzeGui() {
@@ -156,21 +211,23 @@ public class Layer extends Pane{
     }
 
     public void ChangeSelectedPosition(Coordinate moveto){
-        this.getSeleccted().ChangePosition(moveto);
+        this.getSelected().ChangePosition(moveto);
         AlignGuiToCorners();
     }
 
     public void ResizeSelected(int corner, Double x, Double y){
-        getSeleccted().ResizeCorners(corner,x, y);
+        getSelected().ResizeCorners(corner,x, y);
         AlignGuiToCorners();
     }
 
     public void DeleteSelected() {
-        if (seleccted_!=null){
-            removeVO(seleccted_);
-            removeVO(seleccted_);
-            this.getChildren().remove(seleccted_.getImageView());
-            this.setSeleccted(null);
+        if (selected_ !=null){
+            if(selected_.getTypeString().equals("FL")){
+                removeFlow((Flow) selected_);
+            } else {
+                removeVO(selected_);
+            }
+            this.setSelected(null);
         }
     }
 }

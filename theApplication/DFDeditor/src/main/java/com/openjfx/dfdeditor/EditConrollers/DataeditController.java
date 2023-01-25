@@ -41,6 +41,7 @@ public class DataeditController extends UEditController {
         Edited.setName(NameField.getText());
         Edited.setMultiplied(MultyBox.isSelected());
         Edited.setImage();
+        Edited.placeTexts();
         EStage.close();
     }
 }

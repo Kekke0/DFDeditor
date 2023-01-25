@@ -21,6 +21,8 @@
                     prefHeight="37.0" prefWidth="81.0" text="External Element"/>
             <Button fx:id="processadd" onAction="#processAdder" layoutX="37.0" layoutY="126.0" mnemonicParsing="false"
                     prefHeight="37.0" prefWidth="81.0" text="Process"/>
+            <Button onAction="#flowadder" layoutX="37.0" layoutY="176.0" mnemonicParsing="false"
+                    prefHeight="37.0" prefWidth="81.0" text="Flow"/>
          </Pane>
       </left>
 

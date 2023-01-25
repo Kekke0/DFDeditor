@@ -3,6 +3,7 @@ package Model.VOs;
 import Model.Coordinate;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 
 import java.util.Objects;
 
@@ -36,6 +37,20 @@ public class DataBase extends MultipliableObjects{
     @Override
     public String getTypeString(){
         return "DB";
+    }
+
+    @Override
+    public void placeTexts() {
+        getTexts()[1].setFont(new Font(20));
+        getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())/3);
+        getTexts()[1].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY()-this.getCorners()[0].getY())*2/3);
+        getTexts()[1].setWrappingWidth(200);
+
+        getTexts()[0].setFont(new Font(20));
+        int eltolas = isMultiplied()?10:15 ;
+        getTexts()[0].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())/eltolas);
+        getTexts()[0].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY()-this.getCorners()[0].getY())*2/3);
+        getTexts()[0].setWrappingWidth(50);
     }
 
 

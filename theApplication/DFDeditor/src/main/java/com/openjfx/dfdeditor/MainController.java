@@ -3,10 +3,8 @@ package com.openjfx.dfdeditor;
 import Model.Coordinate;
 import Model.EditinStage;
 import Model.Layer;
-import Model.VOs.DataBase;
-import Model.VOs.ExternalElement;
+import Model.VOs.*;
 import Model.VOs.Process;
-import Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -53,6 +51,11 @@ public class MainController {
         PreviewVO = previewVO;
     }
 
+    public void flowadder(ActionEvent e) {
+        setTool("FlowAdder");
+        setPreviewVO(new Flow(new Coordinate(0,0)));
+    }
+
     public void databadder(ActionEvent e) {
         setTool("Databadder");
         setPreviewVO(new DataBase(Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
@@ -73,10 +76,18 @@ public class MainController {
             public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getButton()== MouseButton.PRIMARY) {
                     switch (getTool()) {
+                        case "FlowAdder" -> {
+                            Flow flw = new Flow(new Coordinate(mouseEvent.getX(),mouseEvent.getY()));
+                            Drawable.addFlow(flw);
+                            Drawable.setSelected(flw);
+
+                            Drawable.getChildren().remove(getPreviewVO().getImageView());
+                            setTool("Mouse");
+                        }
                         case "Databadder" -> {
                             DataBase dtb = new DataBase(Drawable.getLevel() + "sa", new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
                             Drawable.addVO(dtb);
-                            Drawable.setSeleccted(dtb);
+                            Drawable.setSelected(dtb);
 
                             Drawable.getChildren().remove(getPreviewVO().getImageView());
                             setTool("Mouse");
@@ -84,7 +95,7 @@ public class MainController {
                         case "ExternalAdder" -> {
                             ExternalElement extel = new ExternalElement(Drawable.getLevel() + "sa", new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
                             Drawable.addVO(extel);
-                            Drawable.setSeleccted(extel);
+                            Drawable.setSelected(extel);
 
                             Drawable.getChildren().remove(getPreviewVO().getImageView());
                             setTool("Mouse");
@@ -92,7 +103,7 @@ public class MainController {
                         case "ProcessAdder" -> {
                             Process proc = new Process(Drawable.getLevel() + "sa", new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
                             Drawable.addVO(proc);
-                            Drawable.setSeleccted(proc);
+                            Drawable.setSelected(proc);
 
                             Drawable.getChildren().remove(getPreviewVO().getImageView());
                             setTool("Mouse");
@@ -105,9 +116,9 @@ public class MainController {
                         }
                     }
                 } else if (mouseEvent.getButton()==MouseButton.SECONDARY){
-                    if(Drawable.getSeleccted().isInside(mouseEvent.getX(), mouseEvent.getY())){
+                    if(Drawable.getSelected()!= null && Drawable.getSelected().isInside(mouseEvent.getX(), mouseEvent.getY())){
                         try {
-                            EditinStage editinStage = new EditinStage(Drawable.getSeleccted());
+                            new EditinStage(Drawable.getSelected());
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -120,7 +131,7 @@ public class MainController {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 switch (getTool()){
-
+                    case "FlowAdder":
                     case "ExternalAdder":
                     case "ProcessAdder":
                     case "Databadder":
@@ -157,17 +168,17 @@ public class MainController {
             public void handle(MouseEvent mouseEvent) {
                 switch (getTool()){
                     case "Mouse"->{
-                        if (Drawable.getSeleccted()!=null){
-                            if (Drawable.getSeleccted().isInside(mouseEvent.getX(), mouseEvent.getY())) {
-                                dragging = true;
-                                grabPosition = VisualObject.Distancing(Drawable.getSeleccted().getCorners()[0], new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
-                                grabPosition.reverse();
-                                return;
-                            }
+                        if (Drawable.getSelected()!=null){
                             int corner=Drawable.IsinCornerGui(mouseEvent.getX(), mouseEvent.getY());
                             if (corner!=-1){
                                 selectedCorner_=corner;
                                 setTool("Resize");
+                                return;
+                            }
+                            if (Drawable.getSelected().isInside(mouseEvent.getX(), mouseEvent.getY())) {
+                                dragging = true;
+                                grabPosition = VisualObject.Distancing(Drawable.getSelected().getCorners()[0], new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
+                                grabPosition.reverse();
                             }
                         }
                     }
@@ -230,7 +241,7 @@ public class MainController {
             public void handle(KeyEvent keyEvent) {
                 switch (keyEvent.getCode()){
                     case DELETE->{
-                        if (Drawable.getSeleccted()!=null)
+                        if (Drawable.getSelected()!=null)
                             Drawable.DeleteSelected();
 
                     }
