@@ -1,6 +1,7 @@
 package Model.VOs;
 
 import Model.Coordinate;
+import Model.Layer;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -93,15 +94,18 @@ public class Flow extends VisualObject{
         return corners;
     }
 
+    @Override
     public String getImagePath() {
         return "/VObjects/Flow.png";
     }
 
+    @Override
     public String getTypeString(){
         return "FL";
     }
 
 
+    @Override
     public void resizeImageView(){
         getImageView().setX(this.Start.getX());
         getImageView().setY(this.Start.getY());
@@ -113,6 +117,7 @@ public class Flow extends VisualObject{
         placeTexts();
     }
 
+    @Override
     protected void placeTexts() {
         getTexts()[1].setFont(new Font(20));
         getTexts()[1].setX(this.getCorners()[0].getX() + (-20) + (this.getCorners()[1].getX()-this.getCorners()[0].getX())/2);
@@ -145,10 +150,36 @@ public class Flow extends VisualObject{
 
     }
 
+    @Override
     public void ResizeCorners(int corner, Double x, Double y) {
         getCorners()[corner].setX(x);
         getCorners()[corner].setY(y);
         resizeImageView();
     }
 
+
+    private void arrowheadCalculation(){
+        double xCoefficient = image_[0].getEndY()-image_[0].getStartY();
+        double yCoefficient = image_[0].getEndX()-image_[0].getStartX();
+        double rhs = xCoefficient * image_[0].getStartX() + yCoefficient * image_[0].getStartY();
+        //(a)*(x-x1)=(b)⋅(y-y1)
+
+        double RADIUS = 10;
+        double yminus = image_[0].getEndY();
+        double xminus = image_[0].getEndX();
+        //(x-u)2+(y-v)2=r2
+        double a,b,c;
+
+
+    }
+
+    private double masodfoku(double a,double b,double c){
+
+        return 0;
+    }
+
+    @Override
+    public void AddToLayer(Layer layer) {
+        layer.addFlow(this);
+    }
 }

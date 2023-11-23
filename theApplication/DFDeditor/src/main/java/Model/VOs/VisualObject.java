@@ -20,6 +20,7 @@ public class VisualObject {
     private Coordinate[] Corners= new Coordinate[4];
 
     private Text[] Texts;
+    public VisualObject(){};
 
     public VisualObject(String ID, Coordinate maincorner) {
         this.ID = ID;
@@ -200,5 +201,9 @@ public class VisualObject {
 
     public String getTypeString(){
         return "VO";
+    }
+
+    public void AddToLayer(Layer layer) {
+        layer.addVO(this);
     }
 }

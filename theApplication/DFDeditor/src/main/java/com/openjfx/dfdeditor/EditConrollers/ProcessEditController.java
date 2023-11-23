@@ -1,7 +1,5 @@
 package com.openjfx.dfdeditor.EditConrollers;
-import Model.EditinStage;
-import Model.VOs.DataBase;
-import Model.VOs.ExternalElement;
+import Model.EditingStage;
 import Model.VOs.Process;
 import Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
@@ -24,9 +22,9 @@ public class ProcessEditController {
     public Button Cancel;
     @FXML
     public Button Apply;
-    private EditinStage EStage;
+    private EditingStage EStage;
 
-    public void addStage(EditinStage stage){
+    public void addStage(EditingStage stage){
         EStage = stage;
     }
 

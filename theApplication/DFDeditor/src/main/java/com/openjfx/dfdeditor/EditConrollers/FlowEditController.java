@@ -1,12 +1,9 @@
 package com.openjfx.dfdeditor.EditConrollers;
 
-import Model.EditinStage;
-import Model.VOs.DataBase;
+import Model.EditingStage;
 import Model.VOs.Flow;
 import Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
@@ -15,7 +12,7 @@ public class FlowEditController {
     public TextField IDField;
     public TextField NameField;
     private Flow Edited;
-    private EditinStage EStage;
+    private EditingStage EStage;
 
 
 
@@ -25,7 +22,7 @@ public class FlowEditController {
         NameField.setText(Edited.getName());
         MultyBox.setSelected(Edited.isOnesided());
     }
-    public void addStage(EditinStage stage){
+    public void addStage(EditingStage stage){
         EStage = stage;
     }
 

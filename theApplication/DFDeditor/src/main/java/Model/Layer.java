@@ -22,6 +22,7 @@ public class Layer extends Pane{
     private final List<VisualObject> VOs=new ArrayList<>();
     private final List<Flow> Flows=new ArrayList<>();
     private VisualObject selected_;
+    private Tool ActiveTool = Tool.MOUSE;
 
     public Layer() {
         super();
@@ -165,6 +166,7 @@ public class Layer extends Pane{
 
     public void Select(double x, double y) {
         if(selected_ !=null && selected_.isInside(x,y)) return;
+
         for (Flow FL: Flows) {
             if (FL.isInside(x,y)){
                 setSelected(FL);
@@ -229,5 +231,13 @@ public class Layer extends Pane{
             }
             this.setSelected(null);
         }
+    }
+
+    public Tool getActiveTool() {
+        return ActiveTool;
+    }
+
+    public void setActiveTool(Tool activeTool) {
+        ActiveTool = activeTool;
     }
 }

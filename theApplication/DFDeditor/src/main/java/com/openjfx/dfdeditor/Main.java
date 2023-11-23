@@ -24,7 +24,7 @@ public class Main extends Application {
         Scene mainscene = new Scene(loader.load());
 
         MainController mainController = loader.getController();
-        mainController.setEventHandlers();
+        mainController.Setter().SetToMouseMode(mainController.Drawable);
         mainController.setKeyBindings(mainscene);
 
         stage.setTitle("DFDeditor");

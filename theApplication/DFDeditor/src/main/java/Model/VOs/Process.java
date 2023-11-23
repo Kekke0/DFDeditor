@@ -78,9 +78,7 @@ public class Process extends VisualObject{
 
     @Override
     public String getImagePath() {
-        if(isDissociable())
-            return "/VObjects/Process.png";
-        return "/VObjects/EProcess.png";
+        return isDissociable() ? "/VObjects/Process.png" : "/VObjects/EProcess.png";
     }
 
     @Override

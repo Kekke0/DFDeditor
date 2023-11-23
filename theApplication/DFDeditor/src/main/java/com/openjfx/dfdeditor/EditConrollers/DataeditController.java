@@ -1,15 +1,13 @@
 package com.openjfx.dfdeditor.EditConrollers;
 
 
-import Model.EditinStage;
+import Model.EditingStage;
 import Model.VOs.DataBase;
 import Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
 
 public class DataeditController extends UEditController {
     public CheckBox MultyBox;
@@ -18,7 +16,7 @@ public class DataeditController extends UEditController {
     public Button Cancel;
     public Button Apply;
     private DataBase Edited;
-    private EditinStage EStage;
+    private EditingStage EStage;
 
 
 
@@ -28,7 +26,7 @@ public class DataeditController extends UEditController {
         NameField.setText(Edited.getName());
         MultyBox.setSelected(Edited.isMultiplied());
     }
-    public void addStage(EditinStage stage){
+    public void addStage(EditingStage stage){
         EStage = stage;
     }
 

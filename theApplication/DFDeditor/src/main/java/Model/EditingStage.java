@@ -11,10 +11,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class EditinStage extends Stage {
+public class EditingStage extends Stage {
     private VisualObject EditedVO;
 
-    public EditinStage(VisualObject editedVO) throws IOException {
+    public EditingStage(VisualObject editedVO) throws IOException {
         EditedVO=editedVO;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(getView()));
         Scene editscene = new Scene(loader.load());
