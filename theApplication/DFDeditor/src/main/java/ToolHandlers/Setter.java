@@ -126,6 +126,8 @@ public class Setter {
     }
 
     public void SetToAddMode(Layer layer, VisualObject object){
+        layer.setActiveTool(Tool.ADD);
+
         layer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {

@@ -5,13 +5,15 @@ import Model.Layer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public class Process extends VisualObject{
+public class VProcess extends VisualObject{
     private String OrgUnit;
     private boolean Dissociable;
     private Layer LowerLayer;
 
-    public Process(String ID, Coordinate maincorner) {
-        super(ID, maincorner);
+    public VProcess(Layer parent, String ID, Coordinate maincorner) {
+        super(parent, ID, maincorner);
+        LowerLayer = new Layer();
+        LowerLayer.setParentLayer(parent);
         setDissociable(false);
     }
 
@@ -79,6 +81,14 @@ public class Process extends VisualObject{
     @Override
     public String getImagePath() {
         return isDissociable() ? "/VObjects/Process.png" : "/VObjects/EProcess.png";
+    }
+
+    @Override
+    public Layer GetLayer(){
+        if (LowerLayer == null) {
+            return super.GetLayer();
+        }
+        return LowerLayer;
     }
 
     @Override

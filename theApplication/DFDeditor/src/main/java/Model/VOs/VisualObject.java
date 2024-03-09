@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 
 import java.util.Objects;
 
-public class VisualObject {
+public abstract class VisualObject {
     private ImageView imageView_;
     private Layer Parent_;
     private String ID;
@@ -22,8 +22,9 @@ public class VisualObject {
     private Text[] Texts;
     public VisualObject(){};
 
-    public VisualObject(String ID, Coordinate maincorner) {
+    public VisualObject(Layer parent,String ID, Coordinate maincorner) {
         this.ID = ID;
+        this.Parent_ = parent;
         setBasicCorners(maincorner);
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(getImagePath())));
         imageView_ = new ImageView(image);
@@ -31,6 +32,13 @@ public class VisualObject {
         resizeImageView();
     }
 
+
+    public Layer GetLayer(){
+        return null;
+    }
+    public Layer getParent() {
+        return Parent_;
+    }
 
     public void ChangePosition(Coordinate maincorner) {
         if (maincorner.getX()<0) maincorner.setX(0);
@@ -49,6 +57,12 @@ public class VisualObject {
         getImageView().setFitWidth(this.Corners[1].getX()-this.Corners[0].getX());
         placeTexts();
     }
+
+    public boolean isDissociable() {
+        return false;
+    }
+
+    public void setDissociable(boolean dissociable){}
 
     protected void placeTexts() {
         Texts[1].setFont(new Font(20));
@@ -122,6 +136,7 @@ public class VisualObject {
 
     public void showConsol(){
     }
+
     public ImageView getImageView(){
         return imageView_;
     }

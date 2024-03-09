@@ -13,8 +13,8 @@ public class Flow extends VisualObject{
     private Boolean onesided;
     private Line[] image_;
 
-    public Flow(Coordinate start) {
-        super("flow",start);
+    public Flow(Layer parent, Coordinate start) {
+        super(parent, "flow",start);
     }
 
     public Boolean isOnesided() {

@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Implement Arrow">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Tool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ToolHandlers/Setter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Refactoring of old code segments&#10;&#10;Welcome back ;)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/EditinStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/EditingStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Layer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Flow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/Process.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/DataeditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/DataeditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ExternalEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ExternalEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/FlowEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/FlowEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ProcessEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/ProcessEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/UEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/EditConrollers/UEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ToolHandlers/Setter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ToolHandlers/Setter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674685261791</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Refactoring of old code segments&#10;&#10;Welcome back ;)">
+      <created>1700699275836</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700699275836</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +233,8 @@
     <MESSAGE value="Making the resieze and delete mechanics" />
     <MESSAGE value="Major update" />
     <MESSAGE value="Implement Arrow" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement Arrow" />
+    <MESSAGE value="Refactoring of old code segments&#10;&#10;Welcome back ;)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring of old code segments&#10;&#10;Welcome back ;)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

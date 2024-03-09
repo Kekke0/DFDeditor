@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.*?>
 <?import Model.Layer?>
-<AnchorPane prefHeight="685.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.openjfx.dfdeditor.MainController">
-   <BorderPane prefHeight="686.0" prefWidth="923.0">
+   <BorderPane fx:id="BP" prefHeight="700.0" prefWidth="1000.0">
 
       <top>
-         <Pane prefHeight="55.0" prefWidth="923.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER"/>
+         <Pane prefHeight="25.0" prefWidth="1000.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+            <Button fx:id="Save" onAction="#saving"
+                    prefHeight="20.0" prefWidth="50.0" text="Save"/>
+            <Button fx:id="Load" onAction="#loading" layoutX="50.0"
+                    prefHeight="20.0" prefWidth="50.0" text="Load"/>
+            <Button fx:id="Export" onAction="#exporting" layoutX="100.0"
+                    prefHeight="20.0" prefWidth="50.0" text="Export"/>
+         </Pane>
       </top>
 
       <left>
-         <Pane prefHeight="631.0" prefWidth="172.0" style="-fx-background-color: grey;"
+         <Pane prefHeight="700.0" prefWidth="172.0" style="-fx-background-color: black;"
                BorderPane.alignment="CENTER">
             <Button fx:id="dataadd" onAction="#databadder" layoutX="37.0" layoutY="26.0" mnemonicParsing="false"
                     prefHeight="37.0" prefWidth="81.0" text="Database"/>
@@ -27,7 +35,12 @@
       </left>
 
       <center>
-         <Layer fx:id="Drawable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+         <Layer fx:id="Drawable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Button fx:id="BackUp" onAction="#BackingUp" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
+                    prefHeight="20.0" prefWidth="50.0" text="Back" visible="false" viewOrder="-1.0"/>
+            <Button fx:id="Down" onAction="#GettingDeeper" layoutX="50.0" layoutY="10.0" mnemonicParsing="false"
+                    prefHeight="20.0" prefWidth="50.0" text="Open" visible="false" viewOrder="-1.0"/>
+         </Layer>
       </center>
 
    </BorderPane>

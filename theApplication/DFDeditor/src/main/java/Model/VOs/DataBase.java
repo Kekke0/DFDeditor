@@ -1,6 +1,7 @@
 package Model.VOs;
 
 import Model.Coordinate;
+import Model.Layer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
@@ -9,13 +10,13 @@ import java.util.Objects;
 
 public class DataBase extends MultipliableObjects{
 
-    public DataBase(String ID, Coordinate maincorner) {
-        super(ID, maincorner);
+    public DataBase(Layer parent, String ID, Coordinate maincorner) {
+        super(parent,ID, maincorner);
     }
 
 
-    public DataBase(String ID, Coordinate maincorner, boolean multiplied) {
-        super(ID, maincorner, multiplied);
+    public DataBase(Layer parent, String ID, Coordinate maincorner, boolean multiplied) {
+        super(parent,ID, maincorner, multiplied);
     }
 
     @Override

@@ -1,9 +1,11 @@
 package Model;
 
 import Model.VOs.Flow;
+import Model.VOs.VProcess;
 import Model.VOs.VisualObject;
 import javafx.beans.DefaultProperty;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -23,6 +25,7 @@ public class Layer extends Pane{
     private final List<Flow> Flows=new ArrayList<>();
     private VisualObject selected_;
     private Tool ActiveTool = Tool.MOUSE;
+    private Button LevelDown_;
 
     public Layer() {
         super();
@@ -34,11 +37,11 @@ public class Layer extends Pane{
         initailzeGui();
     }
 
-    public Layer getParentLayer_() {
+    public Layer getParentLayer() {
         return parentLayer_;
     }
 
-    public void setParentLayer_(Layer parentLayer_) {
+    public void setParentLayer(Layer parentLayer_) {
         this.parentLayer_ = parentLayer_;
     }
 
@@ -50,45 +53,36 @@ public class Layer extends Pane{
         return Level;
     }
 
+    public Button getLevelDown() {
+        return LevelDown_;
+    }
+
+    public void setLevelDown(Button levelDown_) {
+        LevelDown_ = levelDown_;
+    }
+
     public VisualObject getSelected() {
         return selected_;
     }
 
-    public void setSelected(VisualObject seleccted) {
-        if(seleccted==null){
+    public void setSelected(VisualObject selected) {
+        if(selected == null){
             for (int i = 0; i < 4; i++) {
                 this.getChildren().remove(cornersGui_[i]);
             }
-            this.selected_ =seleccted;
+            this.selected_ =selected;
+            LevelDown_.setVisible(false);
             return;
         }
 
-        if (selected_ ==null) {
+        if (selected_ == null) {
             this.getChildren().add(cornersGui_[0]);
             this.getChildren().add(cornersGui_[1]);
             this.getChildren().add(cornersGui_[2]);
             this.getChildren().add(cornersGui_[3]);
         }
-        this.selected_ =seleccted;
-        AlignGuiToCorners();
-    }
-
-    public void setSelected(Flow seleccted) {
-        if(seleccted==null){
-            for (int i = 0; i < 4; i++) {
-                this.getChildren().remove(cornersGui_[i]);
-            }
-            this.selected_ =seleccted;
-            return;
-        }
-
-        if (selected_ ==null) {
-            this.getChildren().add(cornersGui_[0]);
-            this.getChildren().add(cornersGui_[1]);
-            this.getChildren().add(cornersGui_[2]);
-            this.getChildren().add(cornersGui_[3]);
-        }
-        this.selected_ =seleccted;
+        this.selected_ = selected;
+        LevelDown_.setVisible(selected.isDissociable());
         AlignGuiToCorners();
     }
 
@@ -122,6 +116,9 @@ public class Layer extends Pane{
         cornersGui_[2].setY(selected_.getCorners()[2].getY()+5);
         cornersGui_[3].setX(selected_.getCorners()[3].getX()+5);
         cornersGui_[3].setY(selected_.getCorners()[3].getY()+5);
+
+        LevelDown_.setLayoutX(selected_.getCorners()[3].getX()-LevelDown_.getPrefWidth()-5);
+        LevelDown_.setLayoutY(selected_.getCorners()[3].getY()-LevelDown_.getPrefHeight()-10);
     }
 
     private void addTexts(VisualObject vo){
@@ -162,6 +159,13 @@ public class Layer extends Pane{
         }
         this.removeTexts(rf);
         Flows.remove(rf);
+    }
+
+    public void ShowAll() {
+        for (VisualObject vo:
+             VOs) {
+            vo.AddToLayer(this);
+        }
     }
 
     public void Select(double x, double y) {

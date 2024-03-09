@@ -1,10 +1,5 @@
 package ModelTest;
 
-import Model.Coordinate;
-import Model.Layer;
-import Model.VOs.DataBase;
-import Model.VOs.Process;
-
 public class TestMain {
     public static void main(String[] args) {
         /*Layer inicial = new Layer();
