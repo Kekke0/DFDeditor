@@ -1,10 +1,14 @@
 package Model.VOs;
 
+import DataConverting.Model.JSONVisualObject;
 import Model.Coordinate;
 import Model.Layer;
+import com.fasterxml.jackson.core.JsonGenerator;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class Flow extends VisualObject{
     private String[] Connected= new String[2];
@@ -181,5 +185,9 @@ public class Flow extends VisualObject{
     @Override
     public void AddToLayer(Layer layer) {
         layer.addFlow(this);
+    }
+
+    public JSONVisualObject transformToJVO() throws IOException {
+        return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners(), onesided);
     }
 }

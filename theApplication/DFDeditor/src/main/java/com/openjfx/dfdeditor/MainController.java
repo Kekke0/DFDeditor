@@ -1,17 +1,30 @@
 package com.openjfx.dfdeditor;
 
+import DataConverting.VOtoJSONconverter;
 import Model.Coordinate;
+import Model.FileManagementType;
 import Model.Layer;
 import Model.VOs.*;
 import Model.VOs.VProcess;
 import ToolHandlers.Setter;
+import com.openjfx.dfdeditor.FileManagement.FileMenu;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.awt.image.RenderedImage;
+import javax.imageio.ImageIO;
+
+import java.io.File;
+import java.io.IOException;
 
 public class MainController {
     @FXML
@@ -34,8 +47,7 @@ public class MainController {
     @FXML
     public Layer Drawable;
 
-    @FXML
-    private Scene scene_;
+
 
     public VisualObject getPreviewVO() {
         return PreviewVO;
@@ -64,7 +76,7 @@ public class MainController {
         setter_.SetToAddMode(Drawable, new ExternalElement(Drawable,Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
     }
 
-    public void BackingUp(ActionEvent e) {
+    public void BackingUp() {
         if (Drawable.getParentLayer() == null) {
             return;
         }
@@ -92,7 +104,6 @@ public class MainController {
 
 
     public void setKeyBindings(Scene scene) {
-        this.scene_=scene;
         Drawable.setLevelDown(Down);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -112,11 +123,26 @@ public class MainController {
     }
 
     public void saving(ActionEvent actionEvent) {
+        try {
+            new FileMenu(FileManagementType.SAVE,Drawable);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void loading(ActionEvent actionEvent) {
+        try {
+            FileMenu fm = new FileMenu(FileManagementType.LOAD,Drawable);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void exporting(ActionEvent actionEvent) {
+        try {
+            new FileMenu(FileManagementType.EXPORT,Drawable);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

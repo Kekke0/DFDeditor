@@ -1,7 +1,11 @@
 package Model.VOs;
 
+import DataConverting.Model.JSONVisualObject;
 import Model.Coordinate;
 import Model.Layer;
+import com.fasterxml.jackson.core.JsonGenerator;
+
+import java.io.IOException;
 
 public class MultipliableObjects extends VisualObject{
     private boolean Multiplied;
@@ -22,4 +26,10 @@ public class MultipliableObjects extends VisualObject{
     public void setMultiplied(boolean multiplied) {
         Multiplied = multiplied;
     }
+
+    @Override
+    public JSONVisualObject transformToJVO() throws IOException {
+        return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners(), Multiplied);
+    }
+
 }

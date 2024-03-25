@@ -15,7 +15,7 @@ public class DataBase extends MultipliableObjects{
     }
 
 
-    public DataBase(Layer parent, String ID, Coordinate maincorner, boolean multiplied) {
+    public DataBase(Layer parent,         String ID, Coordinate maincorner, boolean multiplied) {
         super(parent,ID, maincorner, multiplied);
     }
 

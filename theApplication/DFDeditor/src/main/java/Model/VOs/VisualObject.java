@@ -1,5 +1,6 @@
 package Model.VOs;
 
+import DataConverting.Model.JSONVisualObject;
 import Model.Coordinate;
 import Model.Layer;
 import javafx.scene.control.ContextMenu;
@@ -9,13 +10,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public abstract class VisualObject {
     private ImageView imageView_;
     private Layer Parent_;
     private String ID;
-    private String VisualID;
     private String Name;
     private Coordinate[] Corners= new Coordinate[4];
 
@@ -212,6 +213,10 @@ public abstract class VisualObject {
 
         contextMenu.getItems().addAll(Edit);
         return contextMenu;
+    }
+
+    public JSONVisualObject transformToJVO() throws IOException {
+        return new JSONVisualObject(getTypeString(),ID, Name, getCorners());
     }
 
     public String getTypeString(){

@@ -21,6 +21,7 @@ public class Layer extends Pane{
     private Layer parentLayer_;
     private int Level;
     private Rectangle cornersGui_[];
+
     private final List<VisualObject> VOs=new ArrayList<>();
     private final List<Flow> Flows=new ArrayList<>();
     private VisualObject selected_;
@@ -35,6 +36,14 @@ public class Layer extends Pane{
     public Layer(Node... nodes) {
         super(nodes);
         initailzeGui();
+    }
+
+    public List<VisualObject> getVOs() {
+        return VOs;
+    }
+
+    public List<Flow> getFlows() {
+        return Flows;
     }
 
     public Layer getParentLayer() {

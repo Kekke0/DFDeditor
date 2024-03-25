@@ -1,5 +1,9 @@
 package Model;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+
+import java.io.IOException;
+
 public class Coordinate {
     private double X, Y;
 
@@ -32,6 +36,15 @@ public class Coordinate {
     public void add(Coordinate distance){
         this.setX(this.X+distance.getX());
         this.setY(this.Y+distance.getY());
+    }
+
+    public void addToJSON(JsonGenerator jgen) throws IOException {
+        jgen.writeStartObject();
+        jgen.writeFieldName("X");
+        jgen.writeString(String.valueOf(X));
+        jgen.writeFieldName("Y");
+        jgen.writeString(String.valueOf(Y));
+        jgen.writeEndObject();
     }
 
     public void reverse(){

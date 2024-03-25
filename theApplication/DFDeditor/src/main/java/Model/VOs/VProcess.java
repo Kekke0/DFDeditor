@@ -1,9 +1,12 @@
 package Model.VOs;
 
+import DataConverting.Model.JSONVisualObject;
 import Model.Coordinate;
 import Model.Layer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
 
 public class VProcess extends VisualObject{
     private String OrgUnit;
@@ -89,6 +92,23 @@ public class VProcess extends VisualObject{
             return super.GetLayer();
         }
         return LowerLayer;
+    }
+
+    @Override
+    public JSONVisualObject transformToJVO() throws IOException {
+        int Vsize = LowerLayer.getVOs().size()+ LowerLayer.getFlows().size();
+        JSONVisualObject[] layer = new JSONVisualObject[Vsize];
+        int i = 0;
+        for (VisualObject vo:LowerLayer.getVOs()) {
+            layer[i] = vo.transformToJVO();
+            i++;
+        }
+        for (VisualObject vo:LowerLayer.getFlows()) {
+            layer[i] = vo.transformToJVO();
+            i++;
+        }
+
+        return new JSONVisualObject(getTypeString(), getID(), getName(), getCorners(),String.valueOf(OrgUnit),Dissociable,layer);
     }
 
     @Override
