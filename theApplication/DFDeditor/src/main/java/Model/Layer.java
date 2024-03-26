@@ -148,6 +148,21 @@ public class Layer extends Pane{
         this.addTexts(vo);
     }
 
+    public void removeAll(){
+        for (VisualObject vo: getVOs()) {
+            this.getChildren().remove(vo.getImageView());
+            this.removeTexts(vo);
+        }
+        VOs.clear();
+        for (Flow fl: getFlows()) {
+            for (Line line: fl.getimage()) {
+                this.getChildren().remove(line);
+            }
+            this.removeTexts(fl);
+        }
+        Flows.clear();
+    }
+
     public void removeVO(VisualObject rvo){
         this.getChildren().remove(rvo.getImageView());
         this.removeTexts(rvo);

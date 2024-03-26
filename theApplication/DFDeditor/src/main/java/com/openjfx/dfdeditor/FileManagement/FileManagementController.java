@@ -5,9 +5,11 @@ import Model.Layer;
 import com.openjfx.dfdeditor.MainController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.WritableImage;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
@@ -22,6 +24,7 @@ public class FileManagementController {
 
     public ToggleGroup FileType;
     public TextField FilePath;
+    public Text Error;
     private FileMenu STAGE;
     private Layer LAYER;
 
@@ -37,22 +40,32 @@ public class FileManagementController {
     }
 
     public void ExportFile(ActionEvent actionEvent) {
-        File file = new File(FilePath.getText());
+        LAYER.setSelected(null);
+        String path = FilePath.getText();
+        RadioButton radioButton = (RadioButton)FileType.getSelectedToggle();
+        String filetype = radioButton.getText();
+        if (!path.endsWith(filetype)){
+            path = path + "." +filetype;
+        }
+        File file = new File(path);
         try {
             WritableImage writableImage = new WritableImage(LAYER.widthProperty().intValue(), LAYER.heightProperty().intValue());
             LAYER.snapshot(null, writableImage);
             RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-            ImageIO.write(renderedImage, "png", file);
+            ImageIO.write(renderedImage, filetype, file);
+            System.out.println(filetype);
         } catch (IOException ex) {
-            ex.printStackTrace();
-            System.out.println("Error!");
+            Error.setText("Something went wrong");
+            return;
         }
         STAGE.close();
     }
 
     public void LoadFile(ActionEvent actionEvent) {
         File file = new File(FilePath.getText());
-        LAYER = new Layer();
+        LAYER.setSelected(null);
+        LAYER.setParentLayer(null);
+        LAYER.removeAll();
 
         try (FileInputStream fis=new FileInputStream (file)) {
             byte[] data = new byte[(int) file.length()];
@@ -65,11 +78,9 @@ public class FileManagementController {
                 VOtoJSONconverter.JSONtoVO(LAYER,svo).AddToLayer(LAYER);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Error.setText("File not found!");
+            return;
         }
-
-        // MainController.Drawable = LAYER;
-        // MainController.BP.setCenter(LAYER);
 
         STAGE.close();
     }
@@ -97,10 +108,12 @@ public class FileManagementController {
     }
 
     public void BrowseFiles(ActionEvent actionEvent) {
-        FileChooser file = new FileChooser();
-        file.setTitle("Browse");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Browse");
 
-
-        FilePath.setText(file.showOpenDialog(STAGE).getAbsolutePath());
+        File file =fileChooser.showOpenDialog(STAGE);
+        if (file != null) {
+            FilePath.setText(file.getAbsolutePath());
+        }
     }
 }

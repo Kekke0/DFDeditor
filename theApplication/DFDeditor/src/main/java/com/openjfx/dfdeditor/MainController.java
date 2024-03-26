@@ -80,11 +80,7 @@ public class MainController {
         if (Drawable.getParentLayer() == null) {
             return;
         }
-        Drawable = Drawable.getParentLayer();
-        BP.setCenter(Drawable);
-        Drawable.getChildren().add(BackUp);
-        Drawable.getChildren().add(Down);
-        BackUp.setVisible(Drawable.getParentLayer() != null);
+        ChangingLayer(Drawable.getParentLayer());
     }
 
     public void GettingDeeper(ActionEvent e) {
@@ -92,14 +88,18 @@ public class MainController {
         if (drawable==null) {
             return;
         }
-        Drawable = drawable;
+        ChangingLayer(drawable);
+        Drawable.setLevelDown(Down);
+        Down.setVisible(false);
+
+    }
+
+    public void ChangingLayer(Layer layer) {
+        Drawable = layer;
+        BP.setCenter(Drawable);
         Drawable.getChildren().add(BackUp);
         Drawable.getChildren().add(Down);
-        Drawable.setLevelDown(Down);
-        BP.setCenter(Drawable);
         BackUp.setVisible(Drawable.getParentLayer() != null);
-        Down.setVisible(false);
-        //VAAAAAA
     }
 
 
