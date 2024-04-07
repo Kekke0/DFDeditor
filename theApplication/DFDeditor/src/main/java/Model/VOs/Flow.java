@@ -132,26 +132,38 @@ public class Flow extends VisualObject{
         image_[3].setVisible(!isOnesided());
         image_[4].setVisible(!isOnesided());
 
+        Coordinate[] arrows = arrowEnds(End,Start);
         image_[1].setStartX(End.getX());
         image_[1].setStartY(End.getY());
-        image_[1].setEndX(End.getX()-10);
-        image_[1].setEndY(End.getY()-10);
+        image_[1].setEndX(arrows[0].getX());
+        image_[1].setEndY(arrows[0].getY());
 
         image_[2].setStartX(End.getX());
         image_[2].setStartY(End.getY());
-        image_[2].setEndX(End.getX()-10);
-        image_[2].setEndY(End.getY()+10);
+        image_[2].setEndX(arrows[1].getX());
+        image_[2].setEndY(arrows[1].getY());
 
+        arrows = arrowEnds(Start,End);
         image_[3].setStartX(Start.getX());
         image_[3].setStartY(Start.getY());
-        image_[3].setEndX(Start.getX()+10);
-        image_[3].setEndY(Start.getY()-10);
+        image_[3].setEndX(arrows[0].getX());
+        image_[3].setEndY(arrows[0].getY());
 
         image_[4].setStartX(Start.getX());
         image_[4].setStartY(Start.getY());
-        image_[4].setEndX(Start.getX()+10);
-        image_[4].setEndY(Start.getY()+10);
+        image_[4].setEndX(arrows[1].getX());
+        image_[4].setEndY(arrows[1].getY());
 
+    }
+
+    public static Coordinate[] arrowEnds(Coordinate origo, Coordinate endPoint){
+
+        double prec = (15/Coordinate.distanceBetwene(origo,endPoint))+1;
+
+        Coordinate quarterPoint = new Coordinate((origo.getX() - endPoint.getX()) / prec, (origo.getY() - endPoint.getY()) / prec);
+        quarterPoint.add(endPoint);
+
+        return Coordinate.intersectionArea(origo,Coordinate.distanceBetwene(origo,quarterPoint)*1.5, quarterPoint,Coordinate.distanceBetwene(origo,quarterPoint));
     }
 
     @Override
@@ -161,26 +173,10 @@ public class Flow extends VisualObject{
         resizeImageView();
     }
 
-
-    private void arrowheadCalculation(){
-        double xCoefficient = image_[0].getEndY()-image_[0].getStartY();
-        double yCoefficient = image_[0].getEndX()-image_[0].getStartX();
-        double rhs = xCoefficient * image_[0].getStartX() + yCoefficient * image_[0].getStartY();
-        //(a)*(x-x1)=(b)⋅(y-y1)
-
-        double RADIUS = 10;
-        double yminus = image_[0].getEndY();
-        double xminus = image_[0].getEndX();
-        //(x-u)2+(y-v)2=r2
-        double a,b,c;
-
-
+    public double getLength() {
+        return Coordinate.distanceBetwene(getCorners()[0],getCorners()[1]);
     }
 
-    private double masodfoku(double a,double b,double c){
-
-        return 0;
-    }
 
     @Override
     public void AddToLayer(Layer layer) {

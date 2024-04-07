@@ -40,6 +40,8 @@ public class FileManagementController {
     }
 
     public void ExportFile(ActionEvent actionEvent) {
+        boolean butonVis = LAYER.getLevelDown().isVisible();
+        LAYER.getLevelDown().setVisible(false);
         LAYER.setSelected(null);
         String path = FilePath.getText();
         RadioButton radioButton = (RadioButton)FileType.getSelectedToggle();
@@ -58,6 +60,8 @@ public class FileManagementController {
             Error.setText("Something went wrong");
             return;
         }
+
+        LAYER.getLevelDown().setVisible(butonVis);
         STAGE.close();
     }
 

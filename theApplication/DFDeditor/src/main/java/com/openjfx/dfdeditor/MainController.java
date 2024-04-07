@@ -47,19 +47,10 @@ public class MainController {
     @FXML
     public Layer Drawable;
 
-
-
-    public VisualObject getPreviewVO() {
-        return PreviewVO;
-    }
-
     public Setter Setter() {
         return setter_;
     }
 
-    public void setPreviewVO(VisualObject previewVO) {
-        PreviewVO = previewVO;
-    }
 
     public void flowadder(ActionEvent e) {
         setter_.SetToAddMode(Drawable, new Flow(Drawable, new Coordinate(0,0)));
