@@ -17,6 +17,11 @@ public class Coordinate {
         setY(y);
     }
 
+    public Coordinate(Coordinate corner) {
+        setX(corner.getX());
+        setY(corner.getY());
+    }
+
     public double getX() {
         return X;
     }
@@ -52,7 +57,7 @@ public class Coordinate {
     public static double distanceBetwene (Coordinate rhs,Coordinate lhs) {
         double x = rhs.getX() - lhs.getX();
         double y = rhs.getY() - lhs.getY();
-        return Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+        return Math.abs(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)));
     }
 
     public static Coordinate[] intersectionArea(Coordinate c1,double r1,Coordinate c2, double r2)

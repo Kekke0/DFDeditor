@@ -8,7 +8,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class VProcess extends VisualObject{
+public class VProcess extends SolidObject{
     private String OrgUnit;
     private boolean Dissociable;
     private Layer LowerLayer;

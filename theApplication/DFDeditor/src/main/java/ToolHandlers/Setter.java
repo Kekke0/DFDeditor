@@ -1,15 +1,13 @@
 package ToolHandlers;
 
-import Model.Coordinate;
-import Model.EditingStage;
-import Model.Layer;
-import Model.Tool;
+import Model.*;
 import Model.VOs.*;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Setter {
 
@@ -107,6 +105,12 @@ public class Setter {
     }
 
     public void SetToResizeMode(Layer layer, int corner){
+
+        if(Objects.equals(layer.getSelected().getTypeString(), "FL")){
+            SetToConnectMode(layer,corner);
+            return;
+        }
+
         layer.setActiveTool(Tool.RESIZE);
 
         layer.setOnMouseDragged(new EventHandler<MouseEvent>() {
@@ -119,6 +123,43 @@ public class Setter {
         layer.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                SetToMouseMode(layer);
+            }
+        });
+
+    }
+
+    public void SetToConnectMode(Layer layer, int corner){
+        if(!Objects.equals(layer.getSelected().getTypeString(), "FL")){
+            SetToMouseMode(layer);
+            return;
+        }
+
+        layer.setActiveTool(Tool.CONNECT);
+
+        layer.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                SolidObject connected = layer.IsInsideOfObject(mouseEvent.getX(), mouseEvent.getY());
+                Flow connecting = (Flow) layer.getSelected();
+                if (connected == null){
+                    layer.ResizeSelected(corner,mouseEvent.getX(), mouseEvent.getY());
+                    connecting.RemoveConnection(corner);
+                    return;
+                }
+
+                Connection cn = Connection.createConnectionTo(connecting,corner,connected,new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
+                cn.AlignToConnected();
+            }
+        });
+
+        layer.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                VisualObject connected = layer.IsInsideOfObject(mouseEvent.getX(), mouseEvent.getY());
+                if (connected != null){
+                    layer.setSelected(connected);
+                }
                 SetToMouseMode(layer);
             }
         });

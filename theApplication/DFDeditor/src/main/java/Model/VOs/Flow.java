@@ -1,17 +1,16 @@
 package Model.VOs;
 
 import DataConverting.Model.JSONVisualObject;
+import Model.Connection;
 import Model.Coordinate;
 import Model.Layer;
-import com.fasterxml.jackson.core.JsonGenerator;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class Flow extends VisualObject{
-    private String[] Connected= new String[2];
+    private Connection[] Connected= new Connection[2];
     private Coordinate Start;
     private Coordinate End;
     private Boolean onesided;
@@ -30,11 +29,11 @@ public class Flow extends VisualObject{
     }
 
 
-    public String[] getConnected() {
+    public Connection[] getConnected() {
         return Connected;
     }
 
-    public void setConnected(String[] connected) {
+    public void setConnected(Connection[] connected) {
         Connected[0] = connected[0];
         Connected[1] = connected[1];
     }
@@ -55,12 +54,23 @@ public class Flow extends VisualObject{
         End = end;
     }
 
-    public void addConnection(String connection, boolean side){
-        if (side){
-            Connected[0]=connection;
+    public void addConnection(Connection connection, boolean side){
+        int sideint = side?0:1;
+        if (Connected[sideint] != null){
+            Connected[sideint].RemoveFromBoth();
+        }
+        Connected[sideint]=connection;
+    }
+
+    public void RemoveConnection(int side){
+        if (Connected[side] == null){
             return;
         }
-        Connected[1]=connection;
+        Connected[side].RemoveFromBoth();
+    }
+
+    public void RemoveFromConnection(int side){
+        Connected[side]= null;
     }
 
     public Line[] getimage() {
@@ -171,6 +181,22 @@ public class Flow extends VisualObject{
         getCorners()[corner].setX(x);
         getCorners()[corner].setY(y);
         resizeImageView();
+    }
+
+    public void ChangePosition(Coordinate maincorner) {
+        if (maincorner.getX()<0) maincorner.setX(0);
+        if (maincorner.getY()<0) maincorner.setY(0);
+        Coordinate distance= Distancing(getCorners()[0],maincorner);
+        for (Coordinate corner: getCorners()) {
+            corner.add(distance);
+        }
+        resizeImageView();
+        if (Connected[0]!=null) {
+            Connected[0].RemoveFromBoth();
+        }
+        if (Connected[1]!=null) {
+            Connected[1].RemoveFromBoth();
+        }
     }
 
     public double getLength() {

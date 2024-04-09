@@ -51,13 +51,7 @@ public abstract class VisualObject {
         resizeImageView();
     }
 
-    public void resizeImageView(){
-        getImageView().setX(this.Corners[0].getX());
-        getImageView().setY(this.Corners[0].getY());
-        getImageView().setFitHeight(this.Corners[2].getY()-this.Corners[0].getY());
-        getImageView().setFitWidth(this.Corners[1].getX()-this.Corners[0].getX());
-        placeTexts();
-    }
+    public void resizeImageView(){}
 
     public boolean isDissociable() {
         return false;
@@ -153,59 +147,7 @@ public abstract class VisualObject {
                 y <= getCorners()[3].getY();
     }
 
-    public void ResizeCorners(int corner, Double x, Double y) {
-
-        Coordinate distance= Distancing(getCorners()[corner],new Coordinate(x, y));
-        switch (corner){
-            case 0->{
-                if (y<= getCorners()[2].getY()-50){
-                    getCorners()[1].setY(getCorners()[1].getY()+distance.getY());
-                    getCorners()[corner].setY(y);
-                }
-                if(x<=getCorners()[1].getX()-90) {
-                    getCorners()[2].setX(getCorners()[2].getX() + distance.getX());
-                    getCorners()[corner].setX(x);
-                }
-            }
-            case 1->{
-                if (y<= getCorners()[3].getY()-50){
-                    getCorners()[0].setY(getCorners()[0].getY()+distance.getY());
-                    getCorners()[corner].setY(y);
-                }
-                if(x>=getCorners()[0].getX()+90) {
-                    getCorners()[3].setX(getCorners()[3].getX() + distance.getX());
-                    getCorners()[corner].setX(x);
-                }
-            }
-            case 2->{
-                if (y>= getCorners()[0].getY()+50) {
-                    getCorners()[3].setY(getCorners()[3].getY()+distance.getY());
-                    getCorners()[corner].setY(y);
-                }
-                if(x<=getCorners()[3].getX()-90){
-                    getCorners()[0].setX(getCorners()[0].getX()+distance.getX());
-                    getCorners()[corner].setX(x);
-                }
-
-            }
-            case 3->{
-                if (y>= getCorners()[0].getY()+50) {
-                    getCorners()[2].setY(getCorners()[2].getY() + distance.getY());
-                    getCorners()[corner].setY(y);
-                }
-                if (x>=getCorners()[3].getX()+90) {
-                    getCorners()[1].setX(getCorners()[1].getX() + distance.getX());
-                    getCorners()[corner].setX(x);
-                }
-            }
-            default -> {
-
-            }
-        }
-
-
-        resizeImageView();
-    }
+    public void ResizeCorners(int corner, Double x, Double y) {}
 
     public ContextMenu getContextMenu(){
         ContextMenu contextMenu = new ContextMenu();
@@ -223,7 +165,5 @@ public abstract class VisualObject {
         return "VO";
     }
 
-    public void AddToLayer(Layer layer) {
-        layer.addVO(this);
-    }
+    public void AddToLayer(Layer layer) {}
 }

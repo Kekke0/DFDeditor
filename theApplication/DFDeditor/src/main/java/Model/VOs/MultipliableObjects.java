@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 
 import java.io.IOException;
 
-public class MultipliableObjects extends VisualObject{
+public class MultipliableObjects extends SolidObject{
     private boolean Multiplied;
 
     public MultipliableObjects(Layer parent,String ID, Coordinate maincorner) {

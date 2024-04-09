@@ -1,6 +1,7 @@
 package Model;
 
 import Model.VOs.Flow;
+import Model.VOs.SolidObject;
 import Model.VOs.VProcess;
 import Model.VOs.VisualObject;
 import javafx.beans.DefaultProperty;
@@ -20,9 +21,9 @@ public class Layer extends Pane{
 
     private Layer parentLayer_;
     private int Level;
-    private Rectangle cornersGui_[];
+    private Rectangle[] cornersGui_;
 
-    private final List<VisualObject> VOs=new ArrayList<>();
+    private final List<SolidObject> VOs=new ArrayList<>();
     private final List<Flow> Flows=new ArrayList<>();
     private VisualObject selected_;
     private Tool ActiveTool = Tool.MOUSE;
@@ -38,7 +39,7 @@ public class Layer extends Pane{
         initailzeGui();
     }
 
-    public List<VisualObject> getVOs() {
+    public List<SolidObject> getVOs() {
         return VOs;
     }
 
@@ -142,7 +143,7 @@ public class Layer extends Pane{
         }
     }
 
-    public void addVO(VisualObject vo){
+    public void addVO(SolidObject vo){
         VOs.add(vo);
         this.getChildren().add(vo.getImageView());
         this.addTexts(vo);
@@ -208,6 +209,16 @@ public class Layer extends Pane{
             }
         }
         setSelected(null);
+    }
+
+    public SolidObject IsInsideOfObject(double x, double y) {
+
+        for (SolidObject VO: VOs) {
+            if (VO.isInside(x,y)){
+                return VO;
+            }
+        }
+        return null;
     }
 
     private void initailzeGui() {
