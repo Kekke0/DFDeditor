@@ -1,8 +1,8 @@
 package com.openjfx.dfdeditor.FileManagement;
 
-import DataConverting.VOtoJSONconverter;
+import DataConverting.JSONConverter;
+import Model.FileManagementType;
 import Model.Layer;
-import com.openjfx.dfdeditor.MainController;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioButton;
@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -54,10 +56,11 @@ public class FileManagementController {
             WritableImage writableImage = new WritableImage(LAYER.widthProperty().intValue(), LAYER.heightProperty().intValue());
             LAYER.snapshot(null, writableImage);
             RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-            ImageIO.write(renderedImage, filetype, file);
-            System.out.println(filetype);
+            if(!ImageIO.write(renderedImage, filetype, file)) {
+                throw new RuntimeException("File creation failed");
+            }
         } catch (IOException ex) {
-            Error.setText("Something went wrong");
+            Error.setText(ex.getMessage());
             return;
         }
 
@@ -79,7 +82,7 @@ public class FileManagementController {
             String str = new String(data, StandardCharsets.UTF_8);
             str = str.substring(1,str.length()-1);
             for (String svo: str.split(";")) {
-                VOtoJSONconverter.JSONtoVO(LAYER,svo).AddToLayer(LAYER);
+                JSONConverter.JSONtoVO(LAYER,svo).AddToLayer(LAYER);
             }
         } catch (IOException e) {
             Error.setText("File not found!");
@@ -94,14 +97,19 @@ public class FileManagementController {
         while (layer.getParentLayer() != null){
             layer = layer.getParentLayer();
         }
+        if (layer.isEmpty()){
+            JOptionPane.showMessageDialog(new Frame(), "The editing panel is empty, there is nothing to be saved!", "Dialog",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         try (PrintWriter writer = new PrintWriter(FilePath.getText())) {
             writer.print("[");
-            writer.print(VOtoJSONconverter.VOtoJSON(layer.getVOs().get(0)));
+            writer.print(JSONConverter.VOtoJSON(layer.getVOs().get(0)));
             for (int i = 1; i < layer.getVOs().size(); i++) {
-                writer.print(";" + VOtoJSONconverter.VOtoJSON(layer.getVOs().get(i)));
+                writer.print(";" + JSONConverter.VOtoJSON(layer.getVOs().get(i)));
             }
             for (int i = 1; i < layer.getFlows().size(); i++) {
-                writer.print(";" + VOtoJSONconverter.VOtoJSON(layer.getFlows().get(i)));
+                writer.print(";" + JSONConverter.VOtoJSON(layer.getFlows().get(i)));
             }
             writer.print("]");
         } catch (IOException e) {
@@ -115,7 +123,8 @@ public class FileManagementController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Browse");
 
-        File file =fileChooser.showOpenDialog(STAGE);
+        File file =STAGE.TYPE == FileManagementType.LOAD? fileChooser.showOpenDialog(STAGE):
+                                                            fileChooser.showSaveDialog(STAGE);
         if (file != null) {
             FilePath.setText(file.getAbsolutePath());
         }

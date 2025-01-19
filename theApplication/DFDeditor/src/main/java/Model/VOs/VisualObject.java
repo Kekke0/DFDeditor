@@ -15,40 +15,38 @@ import java.util.Objects;
 
 public abstract class VisualObject {
     private ImageView imageView_;
-    private Layer Parent_;
+    private final Layer layer_;
+    private Coordinate[] Corners= new Coordinate[4];
+    private Warning warning;
+    private Text[] Texts;
+
     private String ID;
     private String Name;
-    private Coordinate[] Corners= new Coordinate[4];
 
-    private Text[] Texts;
-    public VisualObject(){};
-
-    public VisualObject(Layer parent,String ID, Coordinate maincorner) {
-        this.ID = ID;
-        this.Parent_ = parent;
+    public VisualObject(Layer layer, Coordinate maincorner) {
+        this.layer_ = layer;
         setBasicCorners(maincorner);
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(getImagePath())));
         imageView_ = new ImageView(image);
-        inicalizeTexts();
+        initializeTexts();
         resizeImageView();
     }
 
-
-    public Layer GetLayer(){
-        return null;
-    }
-    public Layer getParent() {
-        return Parent_;
-    }
-
-    public void ChangePosition(Coordinate maincorner) {
-        if (maincorner.getX()<0) maincorner.setX(0);
-        if (maincorner.getY()<0) maincorner.setY(0);
-        Coordinate distance= Distancing(getCorners()[0],maincorner);
+    public void ChangePosition(Coordinate newPozition) {
+        if (newPozition.getX()<0) newPozition.setX(0);
+        if (newPozition.getY()<0) newPozition.setY(0);
+        Coordinate distance= Distancing(getCorners()[0],newPozition);
         for (Coordinate corner: getCorners()) {
             corner.add(distance);
         }
         resizeImageView();
+    }
+
+    public Layer GetLayer(){
+        return null;
+    }
+    public Layer getLayer() {
+        return layer_;
     }
 
     public void resizeImageView(){}
@@ -65,10 +63,10 @@ public abstract class VisualObject {
         Texts[1].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY()-this.getCorners()[0].getY())/3);
     }
 
-    public void inicalizeTexts() {
-        Texts= new Text[2];
-        Texts[0]=new Text("");
-        Texts[1]=new Text("");
+    public void initializeTexts() {
+        setTexts(new Text[2]);
+        getTexts()[0]=new Text("");
+        getTexts()[1]=new Text("");
     }
 
     public Text[] getTexts() {
@@ -158,7 +156,7 @@ public abstract class VisualObject {
     }
 
     public JSONVisualObject transformToJVO() throws IOException {
-        return new JSONVisualObject(getTypeString(),ID, Name, getCorners());
+        throw new UnsupportedOperationException("This Object doesnt have a JSON form, so it should not be transformed.");
     }
 
     public String getTypeString(){
@@ -166,4 +164,24 @@ public abstract class VisualObject {
     }
 
     public void AddToLayer(Layer layer) {}
+
+    public int Check(){
+        this.warning = null;
+        return 0;
+    }
+
+    public void setWarning(Warning warning) {
+        this.warning = warning;
+    }
+
+    public Warning getWarning() {
+        return this.warning;
+    }
+
+    public void addWarningMsg(String msg){
+        if (this.warning==null){
+            this.warning=new Warning(this);
+        }
+        this.warning.addMessage(msg);
+    }
 }

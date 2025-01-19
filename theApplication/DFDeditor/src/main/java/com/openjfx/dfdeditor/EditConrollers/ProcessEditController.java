@@ -1,6 +1,6 @@
 package com.openjfx.dfdeditor.EditConrollers;
 import Model.EditingStage;
-import Model.VOs.VProcess;
+import Model.VOs.Process;
 import Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 public class ProcessEditController {
     @FXML
     public TextField OrgUnit;
-    VProcess Edited;
+    Process Edited;
     @FXML
     public CheckBox MultyBox;
     @FXML
@@ -32,7 +32,7 @@ public class ProcessEditController {
         EStage.close();
     }
     public void setEdited(VisualObject vo){
-        Edited = (VProcess) vo;
+        Edited = (Process) vo;
         IDField.setText(Edited.getID());
         NameField.setText(Edited.getName());
         MultyBox.setSelected(Edited.isDissociable());
@@ -46,7 +46,7 @@ public class ProcessEditController {
         Edited.setDissociable(MultyBox.isSelected());
         Edited.setOrgUnit(OrgUnit.getText());
         Edited.setImage();
-        Edited.getParent().setSelected(Edited);
+        Edited.getLayer().setSelected(Edited);
         EStage.close();
     }
 }

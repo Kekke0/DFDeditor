@@ -1,9 +1,6 @@
 package Model;
 
-import Model.VOs.Flow;
-import Model.VOs.SolidObject;
-import Model.VOs.VProcess;
-import Model.VOs.VisualObject;
+import Model.VOs.*;
 import javafx.beans.DefaultProperty;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -20,13 +17,14 @@ import java.util.List;
 public class Layer extends Pane{
 
     private Layer parentLayer_;
-    private int Level;
-    private Rectangle[] cornersGui_;
-
-    private final List<SolidObject> VOs=new ArrayList<>();
-    private final List<Flow> Flows=new ArrayList<>();
     private VisualObject selected_;
     private Tool ActiveTool = Tool.MOUSE;
+    private final List<SolidObject> VOs=new ArrayList<>();
+    private final List<Flow> Flows=new ArrayList<>();
+    private final List<Warning> Warnings=new ArrayList<>();
+
+    private int Level;
+    private Rectangle[] cornersGui_;
     private Button LevelDown_;
 
     public Layer() {
@@ -46,6 +44,8 @@ public class Layer extends Pane{
     public List<Flow> getFlows() {
         return Flows;
     }
+
+    public List<Warning> getWarnings() {return Warnings;}
 
     public Layer getParentLayer() {
         return parentLayer_;
@@ -186,15 +186,24 @@ public class Layer extends Pane{
         Flows.remove(rf);
     }
 
-    public void ShowAll() {
-        for (VisualObject vo:
-             VOs) {
-            vo.AddToLayer(this);
-        }
+    public void addWarning(Warning warning){
+        Warnings.add(warning);
+        this.getChildren().add(warning.getImageView());
+    }
+
+    public void removeWarning(Warning warning){
+        this.getChildren().remove(warning.getImageView());
+        Warnings.remove(warning);
     }
 
     public void Select(double x, double y) {
         if(selected_ !=null && selected_.isInside(x,y)) return;
+        for(Warning warning: Warnings){
+            if (warning.isInside(x,y)){
+                warning.showDialoge();
+                return;
+            }
+        }
 
         for (Flow FL: Flows) {
             if (FL.isInside(x,y)){
@@ -209,6 +218,15 @@ public class Layer extends Pane{
             }
         }
         setSelected(null);
+    }
+
+    public Warning IsInsideOfWarning(double x, double y) {
+        for (Warning war : getWarnings()) {
+            if (war.isInside(x,y)){
+                return war;
+            }
+        }
+        return null;
     }
 
     public SolidObject IsInsideOfObject(double x, double y) {
@@ -272,11 +290,26 @@ public class Layer extends Pane{
         }
     }
 
+    public boolean isEmpty() {
+        return getVOs().isEmpty() && getFlows().isEmpty();
+    }
+
     public Tool getActiveTool() {
         return ActiveTool;
     }
 
     public void setActiveTool(Tool activeTool) {
         ActiveTool = activeTool;
+    }
+
+    public int Check() {
+        int created = 0;
+        for (VisualObject vo: VOs) {
+            created += vo.Check();
+        }
+        for (VisualObject flow: Flows) {
+            created += flow.Check();
+        }
+        return created;
     }
 }

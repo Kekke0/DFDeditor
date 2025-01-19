@@ -4,14 +4,14 @@ import Model.Coordinate;
 import Model.Layer;
 import javafx.scene.text.Font;
 
-public class ExternalElement extends MultipliableObjects{
+public class ExternalElement extends MultipliableObject {
 
-    public ExternalElement(Layer parent, String ID, Coordinate maincorner) {
-        super(parent,ID, maincorner);
+    public ExternalElement(Layer parent, Coordinate maincorner) {
+        super(parent,maincorner);
     }
 
-    public ExternalElement(Layer parent, String ID, Coordinate maincorner, boolean multiplied) {
-        super(parent,ID, maincorner, multiplied);
+    public ExternalElement(Layer parent, Coordinate maincorner, boolean multiplied) {
+        super(parent, maincorner, multiplied);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ExternalElement extends MultipliableObjects{
 
     protected void placeTexts() {
         getTexts()[1].setFont(new Font(20));
-        getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())/3);
+        getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())/4);
         getTexts()[1].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY()-this.getCorners()[0].getY())/1.5);
     }
 }

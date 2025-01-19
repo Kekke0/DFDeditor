@@ -17,7 +17,7 @@ public class Flow extends VisualObject{
     private Line[] image_;
 
     public Flow(Layer parent, Coordinate start) {
-        super(parent, "flow",start);
+        super(parent,start);
     }
 
     public Boolean isOnesided() {
@@ -168,12 +168,12 @@ public class Flow extends VisualObject{
 
     public static Coordinate[] arrowEnds(Coordinate origo, Coordinate endPoint){
 
-        double prec = (15/Coordinate.distanceBetwene(origo,endPoint))+1;
+        double prec = (15/Coordinate.distanceBetween(origo,endPoint))+1;
 
         Coordinate quarterPoint = new Coordinate((origo.getX() - endPoint.getX()) / prec, (origo.getY() - endPoint.getY()) / prec);
         quarterPoint.add(endPoint);
 
-        return Coordinate.intersectionArea(origo,Coordinate.distanceBetwene(origo,quarterPoint)*1.5, quarterPoint,Coordinate.distanceBetwene(origo,quarterPoint));
+        return Coordinate.intersectionArea(origo,Coordinate.distanceBetween(origo,quarterPoint)*1.5, quarterPoint,Coordinate.distanceBetween(origo,quarterPoint));
     }
 
     @Override
@@ -181,6 +181,7 @@ public class Flow extends VisualObject{
         getCorners()[corner].setX(x);
         getCorners()[corner].setY(y);
         resizeImageView();
+        MoveConnecteds();
     }
 
     public void ChangePosition(Coordinate maincorner) {
@@ -197,10 +198,11 @@ public class Flow extends VisualObject{
         if (Connected[1]!=null) {
             Connected[1].RemoveFromBoth();
         }
+        MoveConnecteds();
     }
 
     public double getLength() {
-        return Coordinate.distanceBetwene(getCorners()[0],getCorners()[1]);
+        return Coordinate.distanceBetween(getCorners()[0],getCorners()[1]);
     }
 
 
@@ -211,5 +213,16 @@ public class Flow extends VisualObject{
 
     public JSONVisualObject transformToJVO() throws IOException {
         return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners(), onesided);
+    }
+
+    public void MoveConnecteds() {
+        if (getWarning() != null){
+            getWarning().ChangePosition(getCorners()[0]);
+        }
+    }
+
+    public int Check(){
+        new Warning(this);
+        return 1;
     }
 }

@@ -8,25 +8,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="386.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.FileManagement.FileManagementController">
+<AnchorPane prefHeight="374.0" prefWidth="380.0" style="-fx-background-color: #a3c5ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.FileManagement.FileManagementController">
    <children>
-      <TextField fx:id="FilePath" layoutX="96.0" layoutY="193.0" prefHeight="26.0" prefWidth="198.0" />
-      <Button layoutX="293.0" layoutY="193.0" mnemonicParsing="false" onAction="#BrowseFiles" text="Browse" />
-      <Button layoutX="279.0" layoutY="276.0" mnemonicParsing="false" onAction="#ExportFile" prefHeight="26.0" prefWidth="82.0" text="Export" />
-      <Button layoutX="96.0" layoutY="276.0" mnemonicParsing="false" onAction="#CancelFileBrowser" prefHeight="26.0" prefWidth="82.0" text="Cancel" />
-      <Text layoutX="96.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File root:" wrappingWidth="82.40000000000009" />
-      <Text layoutX="160.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exporting" wrappingWidth="102.93673706054688">
+      <TextField fx:id="FilePath" layoutX="60.0" layoutY="203.0" prefHeight="26.0" prefWidth="198.0" />
+      <Button layoutX="261.0" layoutY="201.0" mnemonicParsing="false" onAction="#BrowseFiles" prefHeight="30.0" prefWidth="59.0" style="-fx-background-color: white;  -fx-border-color: b8b6b6; -fx-border-width: 2;" text="Browse" />
+      <Button layoutX="241.0" layoutY="287.0" mnemonicParsing="false" onAction="#ExportFile" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Export" />
+      <Button layoutX="58.0" layoutY="287.0" mnemonicParsing="false" onAction="#CancelFileBrowser" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Cancel" />
+      <Text layoutX="59.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File root:" wrappingWidth="82.40000000000009" />
+      <Text layoutX="124.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exporting" wrappingWidth="102.93673706054688">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <RadioButton layoutX="94.0" layoutY="114.0" mnemonicParsing="false" selected="true" text="png">
+      <RadioButton layoutX="58.0" layoutY="124.0" mnemonicParsing="false" selected="true" text="PNG">
          <toggleGroup>
             <ToggleGroup fx:id="FileType" />
          </toggleGroup></RadioButton>
-      <RadioButton disable="true" layoutX="172.0" layoutY="114.0" mnemonicParsing="false" text="jpg" toggleGroup="$FileType" />
-      <RadioButton disable="true" layoutX="236.0" layoutY="114.0" mnemonicParsing="false" text="pdf" toggleGroup="$FileType" />
-      <Text layoutX="94.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Export as:" />
+      <RadioButton layoutX="136.0" layoutY="124.0" mnemonicParsing="false" text="JPEG" toggleGroup="$FileType" />
+      <RadioButton disable="true" layoutX="200.0" layoutY="124.0" mnemonicParsing="false" text="pdf" toggleGroup="$FileType" />
+      <Text layoutX="58.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Export as:" />
       <Text fx:id="Error" fill="#f20505" layoutX="97.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="162.40001525878915">
          <font>
             <Font size="10.0" />

@@ -1,11 +1,10 @@
 package com.openjfx.dfdeditor;
 
-import DataConverting.VOtoJSONconverter;
 import Model.Coordinate;
 import Model.FileManagementType;
 import Model.Layer;
 import Model.VOs.*;
-import Model.VOs.VProcess;
+import Model.VOs.Process;
 import ToolHandlers.Setter;
 import com.openjfx.dfdeditor.FileManagement.FileMenu;
 import javafx.event.ActionEvent;
@@ -13,17 +12,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
-import java.awt.image.RenderedImage;
-import javax.imageio.ImageIO;
-
-import java.io.File;
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class MainController {
@@ -57,14 +50,14 @@ public class MainController {
     }
 
     public void databadder(ActionEvent e) {
-        setter_.SetToAddMode(Drawable, new DataBase(Drawable,Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
+        setter_.SetToAddMode(Drawable, new DataBase(Drawable,new Coordinate(0,0)));
     }
 
     public void processAdder(ActionEvent e) {
-        setter_.SetToAddMode(Drawable, new VProcess(Drawable,Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
+        setter_.SetToAddMode(Drawable, new Process(Drawable,new Coordinate(0,0)));
     }
     public void extrnalAdder(ActionEvent e) {
-        setter_.SetToAddMode(Drawable, new ExternalElement(Drawable,Drawable.getLevel()+"#0#0",new Coordinate(0,0)));
+        setter_.SetToAddMode(Drawable, new ExternalElement(Drawable,new Coordinate(0,0)));
     }
 
     public void BackingUp() {
@@ -135,5 +128,16 @@ public class MainController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void scanning(ActionEvent actionEvent) {
+        Layer topLayer = Drawable;
+        while (topLayer.getParentLayer() != null){
+            topLayer = topLayer.getParentLayer();
+        }
+        int created = topLayer.Check();
+        JOptionPane.showMessageDialog(new Frame(),created>0?"While scanning thew diagram the system found "+created +" errors.":"No error was found in the diagram.",
+                "Result of Scanning",created>0?JOptionPane.WARNING_MESSAGE:JOptionPane.INFORMATION_MESSAGE);
+
     }
 }

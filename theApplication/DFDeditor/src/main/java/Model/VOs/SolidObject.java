@@ -1,17 +1,20 @@
 package Model.VOs;
 
+import DataConverting.Model.JSONVisualObject;
 import Model.Connection;
 import Model.Coordinate;
 import Model.Layer;
+import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SolidObject extends  VisualObject{
-    private final Map<Flow, Connection> Connections = new HashMap<>();;
+public abstract class SolidObject extends  VisualObject{
+    private final Map<Flow, Connection> Connections = new HashMap<>();
 
-    public SolidObject(Layer parent, String id, Coordinate maincorner) {
-        super(parent,id,maincorner);
+    public SolidObject(Layer parent, Coordinate maincorner) {
+        super(parent,maincorner);
     }
 
     public void AddConnection(Connection cn){
@@ -31,6 +34,10 @@ public class SolidObject extends  VisualObject{
     }
 
     public void MoveConnecteds() {
+        if (getWarning() != null){
+            getWarning().ChangePosition(getCorners()[0]);
+        }
+
         if (Connections == null){
             return;
         }
@@ -101,5 +108,14 @@ public class SolidObject extends  VisualObject{
         getImageView().setFitWidth(this.getCorners()[1].getX()-this.getCorners()[0].getX());
         placeTexts();
         MoveConnecteds();
+    }
+
+    public JSONVisualObject transformToJVO() throws IOException {
+        return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners());
+    }
+
+    public int Check(){
+        super.Check();
+        return 0;
     }
 }

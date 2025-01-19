@@ -3,19 +3,18 @@ package Model.VOs;
 import DataConverting.Model.JSONVisualObject;
 import Model.Coordinate;
 import Model.Layer;
-import com.fasterxml.jackson.core.JsonGenerator;
 
 import java.io.IOException;
 
-public class MultipliableObjects extends SolidObject{
+public class MultipliableObject extends SolidObject{
     private boolean Multiplied;
 
-    public MultipliableObjects(Layer parent,String ID, Coordinate maincorner) {
-        super(parent, ID, maincorner);
+    public MultipliableObject(Layer parent, Coordinate maincorner) {
+        super(parent, maincorner);
     }
 
-    public MultipliableObjects(Layer parent, String ID, Coordinate maincorner, boolean multiplied) {
-        super(parent, ID, maincorner);
+    public MultipliableObject(Layer parent, Coordinate maincorner, boolean multiplied) {
+        super(parent, maincorner);
         Multiplied = multiplied;
     }
 

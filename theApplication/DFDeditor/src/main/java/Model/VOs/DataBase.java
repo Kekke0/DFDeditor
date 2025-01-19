@@ -2,21 +2,17 @@ package Model.VOs;
 
 import Model.Coordinate;
 import Model.Layer;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 
-import java.util.Objects;
+public class DataBase extends MultipliableObject {
 
-public class DataBase extends MultipliableObjects{
-
-    public DataBase(Layer parent, String ID, Coordinate maincorner) {
-        super(parent,ID, maincorner);
+    public DataBase(Layer parent, Coordinate maincorner) {
+        super(parent, maincorner);
     }
 
 
-    public DataBase(Layer parent,         String ID, Coordinate maincorner, boolean multiplied) {
-        super(parent,ID, maincorner, multiplied);
+    public DataBase(Layer parent, Coordinate maincorner, boolean multiplied) {
+        super(parent, maincorner, multiplied);
     }
 
     @Override
@@ -54,5 +50,17 @@ public class DataBase extends MultipliableObjects{
         getTexts()[0].setWrappingWidth(50);
     }
 
+    @Override
+    public int Check(){
+        int errors = super.Check();
 
+        if(getID() == null){
+            errors++;
+            addWarningMsg("Missing ID");
+        } else if(!getID().startsWith("D") || !getID().startsWith("M") || !getID().startsWith("T")){
+            errors++;
+            addWarningMsg("A Data base id must start with one of the following: \n \"D\" if its digital, an \"M\" if its manual, or a \"T\" if its temporary!\n");
+        }
+        return errors;
+    }
 }

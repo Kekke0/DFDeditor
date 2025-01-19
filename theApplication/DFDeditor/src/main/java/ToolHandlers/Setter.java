@@ -14,6 +14,11 @@ public class Setter {
     public void SetToMouseMode(Layer layer){
         layer.setActiveTool(Tool.MOUSE);
 
+        layer.setOnMouseMoved(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {}
+        });
+
         layer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -178,6 +183,8 @@ public class Setter {
                     object.AddToLayer(layer);
                     layer.setSelected(object);
                     SetToMouseMode(layer);
+                } else if (mouseEvent.getButton()==MouseButton.SECONDARY){
+                    SetToMouseMode(layer); // Exiting the Add Mode
                 }
             }
         });

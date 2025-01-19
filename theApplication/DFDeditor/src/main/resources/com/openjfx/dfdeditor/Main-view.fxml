@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+
 <?import Model.Layer?>
-
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.openjfx.dfdeditor.MainController">
-   <BorderPane fx:id="BP" prefHeight="700.0" prefWidth="1000.0">
-
-      <top>
-         <Pane prefHeight="25.0" prefWidth="1000.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
-            <Button fx:id="Save" onAction="#saving"
-                    prefHeight="20.0" prefWidth="50.0" text="Save"/>
-            <Button fx:id="Load" onAction="#loading" layoutX="50.0"
-                    prefHeight="20.0" prefWidth="50.0" text="Load"/>
-            <Button fx:id="Export" onAction="#exporting" layoutX="100.0"
-                    prefHeight="20.0" prefWidth="50.0" text="Export"/>
-         </Pane>
-      </top>
+<AnchorPane minHeight="250.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.MainController">
+   <BorderPane fx:id="BP" layoutY="35.0" minHeight="250.0" minWidth="500.0" prefHeight="673.0" prefWidth="1149.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
 
       <left>
-         <Pane prefHeight="700.0" prefWidth="172.0" style="-fx-background-color: black;"
-               BorderPane.alignment="CENTER">
-            <Button fx:id="dataadd" onAction="#databadder" layoutX="37.0" layoutY="26.0" mnemonicParsing="false"
-                    prefHeight="37.0" prefWidth="81.0" text="Database"/>
-            <Button fx:id="externaladd" onAction="#extrnalAdder" layoutX="37.0" layoutY="76.0" mnemonicParsing="false"
-                    prefHeight="37.0" prefWidth="81.0" text="External Element"/>
-            <Button fx:id="processadd" onAction="#processAdder" layoutX="37.0" layoutY="126.0" mnemonicParsing="false"
-                    prefHeight="37.0" prefWidth="81.0" text="Process"/>
-            <Button onAction="#flowadder" layoutX="37.0" layoutY="176.0" mnemonicParsing="false"
-                    prefHeight="37.0" prefWidth="81.0" text="Flow"/>
+         <Pane prefHeight="675.0" prefWidth="170.0" style="-fx-background-color: #a3c5ff; -fx-border-style: hidden solid solid solid; -fx-border-color: black;" BorderPane.alignment="CENTER">
+            <Button fx:id="dataadd" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#databadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Database" />
+            <Button fx:id="externaladd" layoutX="25.0" layoutY="84.0" mnemonicParsing="false" onAction="#extrnalAdder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="External Element" />
+            <Button fx:id="processadd" layoutX="25.0" layoutY="143.0" mnemonicParsing="false" onAction="#processAdder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Process" />
+            <Button layoutX="25.0" layoutY="200.0" mnemonicParsing="false" onAction="#flowadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Flow" />
+            <BorderPane.margin>
+               <Insets bottom="10.0" />
+            </BorderPane.margin>
          </Pane>
       </left>
 
       <center>
-         <Layer fx:id="Drawable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <Button fx:id="BackUp" onAction="#BackingUp" layoutX="10.0" layoutY="10.0" mnemonicParsing="false"
-                    prefHeight="20.0" prefWidth="50.0" text="Back" visible="false" viewOrder="-1.0"/>
-            <Button fx:id="Down" onAction="#GettingDeeper" layoutX="50.0" layoutY="10.0" mnemonicParsing="false"
-                    prefHeight="20.0" prefWidth="50.0" text="Open" visible="false" viewOrder="-1.0"/>
+         <Layer fx:id="Drawable" prefHeight="685.0" prefWidth="928.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+            <Button fx:id="BackUp" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#BackingUp" prefHeight="20.0" prefWidth="50.0" text="Back" viewOrder="-1.0" visible="false" />
+            <Button fx:id="Down" layoutX="50.0" layoutY="10.0" mnemonicParsing="false" onAction="#GettingDeeper" prefHeight="20.0" prefWidth="50.0" text="Open" viewOrder="-1.0" visible="false" />
          </Layer>
       </center>
 
    </BorderPane>
+   <ToolBar prefHeight="35.0" prefWidth="939.0" scaleShape="false" style="-fx-background-color: #a3c5ff; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+     <items>
+         <Button fx:id="Save" onAction="#saving" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Save" />
+         <Button fx:id="Load" onAction="#loading" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Load" />
+         <Button fx:id="Export" onAction="#exporting" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Export" />
+     </items>
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+   </ToolBar>
+   <ToolBar layoutX="943.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" prefWidth="171.0" scaleShape="false" style="-fx-background-color: #a3c5ff; -fx-border-style: solid none solid solid; -fx-border-color: black;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+         <Button fx:id="Scan" nodeOrientation="RIGHT_TO_LEFT" onAction="#scanning" prefHeight="20.0" prefWidth="106.0" style="-fx-background-color: none;" text="Scan Diagram" />
+      </items>
+   </ToolBar>
 </AnchorPane>

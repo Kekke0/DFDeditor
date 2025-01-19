@@ -8,19 +8,19 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class VProcess extends SolidObject{
+public class Process extends SolidObject{
     private String OrgUnit;
     private boolean Dissociable;
     private Layer LowerLayer;
 
-    public VProcess(Layer parent, String ID, Coordinate maincorner) {
-        super(parent, ID, maincorner);
+    public Process(Layer parent, Coordinate maincorner) {
+        super(parent, maincorner);
         LowerLayer = new Layer();
         LowerLayer.setParentLayer(parent);
         setDissociable(false);
     }
 
-    public void inicalizeTexts() {
+    public void initializeTexts() {
         setTexts(new Text[3]);
         getTexts()[0]=new Text(getName());
         getTexts()[1]=new Text(getName());
@@ -122,5 +122,17 @@ public class VProcess extends SolidObject{
     @Override
     public String getTypeString(){
         return "PR";
+    }
+
+    @Override
+    public int Check(){
+        int created = 0;
+        System.out.println("Check:"+getTypeString()+"\n ::");
+        if (isDissociable()) {
+            created = created + LowerLayer.Check();
+        }
+        System.out.println(";;");
+        //...
+        return created;
     }
 }

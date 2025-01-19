@@ -6,13 +6,12 @@ import Model.Layer;
 import Model.VOs.*;
 
 import java.io.IOException;
-import java.io.StringWriter;
 
-import com.fasterxml.jackson.core.*;
+import Model.VOs.Process;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class VOtoJSONconverter {
+public class JSONConverter {
 
     public static String VOtoJSON(VisualObject object) throws IOException {
         return new ObjectMapper().writeValueAsString(object.transformToJVO());
@@ -22,7 +21,7 @@ public class VOtoJSONconverter {
     public static VisualObject JSONtoVO(Layer parent,String json) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         JSONVisualObject map
-                = objectMapper.readValue(json, new TypeReference<JSONVisualObject>(){});
+                = objectMapper.readValue(json, new TypeReference<>(){});
 
         VisualObject importedVO = JVOToVO(parent, map);
 
@@ -30,7 +29,7 @@ public class VOtoJSONconverter {
     }
 
     public static VisualObject JVOToVO(Layer parent, JSONVisualObject map) throws IOException {
-        Coordinate firstcorner = map.getCorners()[0];
+        Coordinate firstCorner = map.getCorners()[0];
 
         String ID =map.getID();
         String Name =map.getName();
@@ -39,7 +38,8 @@ public class VOtoJSONconverter {
 
         switch (map.getType()){
             case "PR"->{
-                VProcess proc = new VProcess(parent,ID, firstcorner);
+                Process proc = new Process(parent, firstCorner);
+                proc.setID(ID);
                 proc.setName(Name);
                 proc.setOrgUnit((String) map.getOrgUnit());
                 proc.setDissociable(map.getDissociable());
@@ -50,19 +50,20 @@ public class VOtoJSONconverter {
 
             }
             case "DB"->{
-                DataBase db = new DataBase(parent,ID, firstcorner);
+                DataBase db = new DataBase(parent, firstCorner);
+                db.setID(ID);
                 db.setName(Name);
                 db.setMultiplied(map.getMultiplied());
                 importedVO = db;
             }
             case "EE"->{
-                ExternalElement ee = new ExternalElement(parent,ID, firstcorner);
+                ExternalElement ee = new ExternalElement(parent, firstCorner);
                 ee.setName(Name);
                 ee.setMultiplied((map.getMultiplied()));
                 importedVO = ee;
             }
             case "FL"->{
-                Flow fl = new Flow(parent,firstcorner);
+                Flow fl = new Flow(parent,firstCorner);
                 fl.setName(Name);
                 importedVO = fl;
             }

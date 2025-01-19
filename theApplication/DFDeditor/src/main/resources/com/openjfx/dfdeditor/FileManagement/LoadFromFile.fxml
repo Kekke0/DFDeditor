@@ -6,13 +6,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="330.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.FileManagement.FileManagementController">
+<AnchorPane prefHeight="330.0" prefWidth="430.0" style="-fx-background-color: #a3c5ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.FileManagement.FileManagementController">
 
     <children>
         <TextField fx:id="FilePath" layoutX="85.0" layoutY="132.0" prefHeight="26.0" prefWidth="198.0" promptText="(*.json)" />
         <Button layoutX="282.0" layoutY="132.0" mnemonicParsing="false" onAction="#BrowseFiles" text="Browse" />
-        <Button layoutX="261.0" layoutY="215.0" mnemonicParsing="false" onAction="#LoadFile" prefHeight="26.0" prefWidth="82.0" text="Load" />
-        <Button layoutX="78.0" layoutY="215.0" mnemonicParsing="false" onAction="#CancelFileBrowser" prefHeight="26.0" prefWidth="82.0" text="Cancel" />
+        <Button layoutX="261.0" layoutY="215.0" mnemonicParsing="false" onAction="#LoadFile" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Load" />
         <Text layoutX="85.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="File root:" wrappingWidth="90.40000000000009" />
         <Text layoutX="160.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Load" textAlignment="CENTER" wrappingWidth="102.93673706054688">
             <font>
@@ -24,6 +23,7 @@
                 <Font size="10.0" />
             </font>
         </Text>
+      <Button layoutX="89.0" layoutY="213.0" mnemonicParsing="false" onAction="#CancelFileBrowser" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Cancel" />
     </children>
 
 </AnchorPane>

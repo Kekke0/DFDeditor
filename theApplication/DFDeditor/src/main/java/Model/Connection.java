@@ -6,11 +6,8 @@ import Model.VOs.SolidObject;
 public class Connection {
     Flow Connecting;
     SolidObject Connected;
-
     boolean ConnectingSide;
-
     int[] ConnectedSide = new int[2];
-
     ConnectionPoint connectionPoint;
 
     public Connection(Flow connecting, SolidObject connected, boolean connectingSide, int[] connectedSide, ConnectionPoint connectionPoint) {
@@ -34,14 +31,14 @@ public class Connection {
 
     public void AlignToConnected(){
 
-        Coordinate midleCorner = Coordinate.getMidleOf(Connected.getCorners()[ConnectedSide[0]],Connected.getCorners()[ConnectedSide[1]]);
+        Coordinate midleCorner = Coordinate.getMiddleOf(Connected.getCorners()[ConnectedSide[0]],Connected.getCorners()[ConnectedSide[1]]);
         Coordinate connection = null;
         switch (connectionPoint){
             case A ->{
                 connection = new Coordinate(Connected.getCorners()[ConnectedSide[0]]);
             }
             case B -> {
-                connection = new Coordinate(Coordinate.getMidleOf(Connected.getCorners()[ConnectedSide[0]],midleCorner));
+                connection = new Coordinate(Coordinate.getMiddleOf(Connected.getCorners()[ConnectedSide[0]],midleCorner));
             }
             case C -> {
                 connection = new Coordinate(midleCorner);
@@ -65,7 +62,7 @@ public class Connection {
 
 
         for (int i = 0; i < corners.length; i++) {
-            double distance = Coordinate.distanceBetwene(coordinate,corners[i]);
+            double distance = Coordinate.distanceBetween(coordinate,corners[i]);
 
             if (distance>=minDistance){
                 continue;
@@ -78,7 +75,7 @@ public class Connection {
                 if (i==j){
                     continue;
                 }
-                double actualPrecent = Coordinate.distanceBetwene(corners[j],coordinate)/Coordinate.distanceBetwene(corners[j],corners[i]);
+                double actualPrecent = Coordinate.distanceBetween(corners[j],coordinate)/Coordinate.distanceBetween(corners[j],corners[i]);
                 if (actualPrecent<precentdistance){
                     precentdistance = actualPrecent;
                     chosenSide[1]=j;
@@ -86,15 +83,15 @@ public class Connection {
             }
         }
 
-        Coordinate midlePoint = Coordinate.getMidleOf(corners[chosenSide[0]],corners[chosenSide[1]]);
-        Coordinate quarterPoint = Coordinate.getMidleOf(corners[chosenSide[0]],midlePoint);
+        Coordinate midlePoint = Coordinate.getMiddleOf(corners[chosenSide[0]],corners[chosenSide[1]]);
+        Coordinate quarterPoint = Coordinate.getMiddleOf(corners[chosenSide[0]],midlePoint);
 
-        double quarterdis = Coordinate.distanceBetwene(coordinate,quarterPoint);
+        double quarterdis = Coordinate.distanceBetween(coordinate,quarterPoint);
         if (minDistance<quarterdis){
             chosenPoint = ConnectionPoint.A;
         }
 
-        if (Coordinate.distanceBetwene(coordinate,midlePoint)<quarterdis){
+        if (Coordinate.distanceBetween(coordinate,midlePoint)<quarterdis){
             chosenPoint = ConnectionPoint.C;
         }
 

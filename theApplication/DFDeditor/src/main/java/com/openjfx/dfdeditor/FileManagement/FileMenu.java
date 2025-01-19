@@ -16,6 +16,8 @@ import static Model.FileManagementType.LOAD;
 
 public class FileMenu extends Stage {
 
+    FileManagementType TYPE;
+
     public FileMenu(FileManagementType type, Layer layer) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(getView(type)));
         Scene scene = new Scene(loader.load());
@@ -24,7 +26,7 @@ public class FileMenu extends Stage {
         controller.addStage(this);
         controller.setLayer(layer);
 
-        this.setTitle("Editor");
+        this.setTitle("File manager");
         Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Menu/inprogress.png")));
         this.getIcons().add(icon);
         this.setScene(scene);
@@ -32,6 +34,7 @@ public class FileMenu extends Stage {
     }
 
     private String getView(FileManagementType type) {
+        TYPE = type;
         switch (type) {
             case LOAD -> { return "/com/openjfx/dfdeditor/FileManagement/LoadFromFile.fxml";}
             case SAVE ->{return "/com/openjfx/dfdeditor/FileManagement/SaveToFile.fxml";}

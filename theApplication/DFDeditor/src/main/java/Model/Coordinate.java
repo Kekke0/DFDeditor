@@ -1,9 +1,5 @@
 package Model;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-
-import java.io.IOException;
-
 public class Coordinate {
     private double X, Y;
 
@@ -18,6 +14,7 @@ public class Coordinate {
     }
 
     public Coordinate(Coordinate corner) {
+
         setX(corner.getX());
         setY(corner.getY());
     }
@@ -48,13 +45,13 @@ public class Coordinate {
         this.setY(getY() * -1);
     }
 
-    public static Coordinate getMidleOf (Coordinate rhs,Coordinate lhs) {
+    public static Coordinate getMiddleOf(Coordinate rhs, Coordinate lhs) {
         Coordinate midle = new Coordinate((rhs.getX() - lhs.getX()) / 2, (rhs.getY() - lhs.getY()) / 2);
         midle.add(lhs);
         return midle;
     }
 
-    public static double distanceBetwene (Coordinate rhs,Coordinate lhs) {
+    public static double distanceBetween(Coordinate rhs, Coordinate lhs) {
         double x = rhs.getX() - lhs.getX();
         double y = rhs.getY() - lhs.getY();
         return Math.abs(Math.sqrt(Math.pow(x,2) + Math.pow(y,2)));
@@ -69,7 +66,7 @@ public class Coordinate {
         y2 = c2.getY();
 
         double apart,d1,h;
-        apart = Coordinate.distanceBetwene(c1,c2); // distance between two circles
+        apart = Coordinate.distanceBetween(c1,c2); // distance between two circles
         d1 = (Math.pow(r1,2)-Math.pow(r2,2)+Math.pow(apart,2))/(2*apart);
         h = Math.sqrt(Math.pow(r1,2)-Math.pow(d1,2));
 
