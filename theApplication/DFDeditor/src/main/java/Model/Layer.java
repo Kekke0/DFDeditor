@@ -312,4 +312,10 @@ public class Layer extends Pane{
         }
         return created;
     }
+
+    public void setWarningVisibility(boolean visible) {
+        for (Warning warning: Warnings) {
+            warning.getImageView().setVisible(visible);
+        }
+    }
 }

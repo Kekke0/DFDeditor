@@ -29,6 +29,8 @@ public class Connection {
         return Connecting;
     }
 
+    public SolidObject getConnected() {return Connected;}
+
     public void AlignToConnected(){
 
         Coordinate midleCorner = Coordinate.getMiddleOf(Connected.getCorners()[ConnectedSide[0]],Connected.getCorners()[ConnectedSide[1]]);

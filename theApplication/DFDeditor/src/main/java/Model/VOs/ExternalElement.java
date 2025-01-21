@@ -40,4 +40,10 @@ public class ExternalElement extends MultipliableObject {
         getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())/4);
         getTexts()[1].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY()-this.getCorners()[0].getY())/1.5);
     }
+
+    @Override
+    public int Check(){
+        int errors = super.Check();
+        return errors;
+    }
 }

@@ -222,7 +222,20 @@ public class Flow extends VisualObject{
     }
 
     public int Check(){
-        new Warning(this);
+        int error = super.Check();
+
+        if (this.Connected[0] != null && this.Connected[1] != null) {
+            String[] types = new String[2];
+            types[0] = this.Connected[0].getConnected().getTypeString();
+            types[1] = this.Connected[0].getConnected().getTypeString();
+            if (!types[1].equals("PR") && !types[0].equals("PR")){
+                    error++;
+                    addWarningMsg("This two object cannot be connected directly. Insert a Process to explain their interaction.");
+            }
+
+        }
+
+
         return 1;
     }
 }

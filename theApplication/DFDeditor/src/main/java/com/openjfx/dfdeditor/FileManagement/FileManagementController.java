@@ -45,6 +45,8 @@ public class FileManagementController {
         boolean butonVis = LAYER.getLevelDown().isVisible();
         LAYER.getLevelDown().setVisible(false);
         LAYER.setSelected(null);
+        LAYER.setWarningVisibility(false);
+
         String path = FilePath.getText();
         RadioButton radioButton = (RadioButton)FileType.getSelectedToggle();
         String filetype = radioButton.getText();
@@ -65,6 +67,7 @@ public class FileManagementController {
         }
 
         LAYER.getLevelDown().setVisible(butonVis);
+        LAYER.setWarningVisibility(true);
         STAGE.close();
     }
 

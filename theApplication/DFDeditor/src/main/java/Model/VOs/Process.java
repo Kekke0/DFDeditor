@@ -126,13 +126,18 @@ public class Process extends SolidObject{
 
     @Override
     public int Check(){
-        int created = 0;
-        System.out.println("Check:"+getTypeString()+"\n ::");
+        int errors = 0;
+
         if (isDissociable()) {
-            created = created + LowerLayer.Check();
+            errors += LowerLayer.Check();
+
+            if (LowerLayer.getVOs().size() == 0 && LowerLayer.getFlows().size() == 0) {
+                addWarningMsg("This process is marked as dissociable but there is no implementation of lower layer.");
+                errors++;
+            }
         }
-        System.out.println(";;");
-        //...
-        return created;
+
+
+        return errors;
     }
 }

@@ -116,6 +116,12 @@ public abstract class SolidObject extends  VisualObject{
 
     public int Check(){
         super.Check();
-        return 0;
+
+        int errors = 0;
+        if(getName()== null){
+            errors++;
+            addWarningMsg("Missing Name");
+        }
+        return errors;
     }
 }
