@@ -3,6 +3,7 @@ package Model.VOs;
 import DataConverting.Model.JSONVisualObject;
 import Model.Coordinate;
 import Model.Layer;
+import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -72,6 +73,8 @@ public abstract class VisualObject {
     public Text[] getTexts() {
         return Texts;
     }
+
+    public abstract Node[] getimage();
 
     public void setTexts(Text[] texts) {
         Texts = texts;
@@ -163,7 +166,7 @@ public abstract class VisualObject {
         return "VO";
     }
 
-    public void AddToLayer(Layer layer) {}
+    public void  AddToLayer(Layer layer) {}
 
     public int Check(){
         this.warning = null;

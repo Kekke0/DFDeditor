@@ -74,6 +74,7 @@ public class MainController {
         }
         ChangingLayer(drawable);
         Drawable.setLevelDown(Down);
+        Drawable.setBackUp(BackUp);
         Down.setVisible(false);
 
     }
@@ -89,6 +90,7 @@ public class MainController {
 
     public void setKeyBindings(Scene scene) {
         Drawable.setLevelDown(Down);
+        Drawable.setBackUp(BackUp);
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {

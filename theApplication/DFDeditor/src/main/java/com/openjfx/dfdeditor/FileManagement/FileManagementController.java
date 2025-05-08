@@ -42,8 +42,10 @@ public class FileManagementController {
     }
 
     public void ExportFile(ActionEvent actionEvent) {
-        boolean butonVis = LAYER.getLevelDown().isVisible();
+        boolean levelDownVis = LAYER.getLevelDown().isVisible();
         LAYER.getLevelDown().setVisible(false);
+        boolean backUpVis = LAYER.getBackUp().isVisible();
+        LAYER.getBackUp().setVisible(false);
         LAYER.setSelected(null);
         LAYER.setWarningVisibility(false);
 
@@ -66,7 +68,8 @@ public class FileManagementController {
             return;
         }
 
-        LAYER.getLevelDown().setVisible(butonVis);
+        LAYER.getLevelDown().setVisible(levelDownVis);
+        LAYER.getBackUp().setVisible(backUpVis);
         LAYER.setWarningVisibility(true);
         STAGE.close();
     }

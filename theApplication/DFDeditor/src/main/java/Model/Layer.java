@@ -26,6 +26,7 @@ public class Layer extends Pane{
     private int Level;
     private Rectangle[] cornersGui_;
     private Button LevelDown_;
+    private Button BackUp_;
 
     public Layer() {
         super();
@@ -132,68 +133,70 @@ public class Layer extends Pane{
     }
 
     private void addTexts(VisualObject vo){
-        for (Text votext : vo.getTexts()) {
-            this.getChildren().add(votext);
-        }
+        addNodesToChildren(vo.getTexts());
     }
 
     private void removeTexts(VisualObject vo){
-        for (Text votext : vo.getTexts()) {
-            this.getChildren().remove(votext);
-        }
+        removeNodesFromChildren(vo.getTexts());
     }
 
     public void addVO(SolidObject vo){
         VOs.add(vo);
-        this.getChildren().add(vo.getImageView());
+        this.addNodesToChildren(vo.getimage());
         this.addTexts(vo);
     }
 
     public void removeAll(){
         for (VisualObject vo: getVOs()) {
-            this.getChildren().remove(vo.getImageView());
+            removeNodesFromChildren(vo.getimage());
             this.removeTexts(vo);
         }
         VOs.clear();
         for (Flow fl: getFlows()) {
-            for (Line line: fl.getimage()) {
-                this.getChildren().remove(line);
-            }
+            removeNodesFromChildren(fl.getimage());
             this.removeTexts(fl);
         }
         Flows.clear();
     }
 
     public void removeVO(VisualObject rvo){
-        this.getChildren().remove(rvo.getImageView());
+        removeNodesFromChildren(rvo.getimage());
         this.removeTexts(rvo);
         VOs.remove(rvo);
     }
 
     public void addFlow(Flow flow){
         Flows.add(flow);
-        for (Line line: flow.getimage()) {
-            this.getChildren().add(line);
-        }
+        this.addNodesToChildren(flow.getimage());
         this.addTexts(flow);
     }
 
     public void removeFlow(Flow rf){
-        for (Line line: rf.getimage()) {
-            this.getChildren().remove(line);
-        }
+        this.removeNodesFromChildren(rf.getimage());
         this.removeTexts(rf);
         Flows.remove(rf);
     }
 
     public void addWarning(Warning warning){
         Warnings.add(warning);
-        this.getChildren().add(warning.getImageView());
+        this.addNodesToChildren(warning.getimage());
     }
 
     public void removeWarning(Warning warning){
-        this.getChildren().remove(warning.getImageView());
+        this.removeNodesFromChildren(warning.getimage());
         Warnings.remove(warning);
+    }
+
+    public void addNodesToChildren(Node[] node){
+        for (Node n : node) {
+            this.getChildren().add(n);
+        }
+    }
+
+    public void removeNodesFromChildren(Node[] node){
+        for (Node n : node) {
+            this.getChildren().remove(n);
+        }
     }
 
     public void Select(double x, double y) {
@@ -317,5 +320,13 @@ public class Layer extends Pane{
         for (Warning warning: Warnings) {
             warning.getImageView().setVisible(visible);
         }
+    }
+
+    public void setBackUp(Button backUp) {
+        BackUp_ = backUp;
+    }
+
+    public Button getBackUp() {
+        return BackUp_;
     }
 }

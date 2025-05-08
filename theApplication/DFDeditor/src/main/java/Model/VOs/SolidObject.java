@@ -4,6 +4,7 @@ import DataConverting.Model.JSONVisualObject;
 import Model.Connection;
 import Model.Coordinate;
 import Model.Layer;
+import javafx.scene.Node;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -108,6 +109,13 @@ public abstract class SolidObject extends  VisualObject{
         getImageView().setFitWidth(this.getCorners()[1].getX()-this.getCorners()[0].getX());
         placeTexts();
         MoveConnecteds();
+    }
+
+    @Override
+    public Node[] getimage() {
+        Node[] image = new Node[1];
+        image[0] = getImageView();
+        return image;
     }
 
     public JSONVisualObject transformToJVO() throws IOException {

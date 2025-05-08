@@ -4,6 +4,7 @@ import DataConverting.Model.JSONVisualObject;
 import Model.Connection;
 import Model.Coordinate;
 import Model.Layer;
+import javafx.scene.Node;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 
@@ -73,7 +74,8 @@ public class Flow extends VisualObject{
         Connected[side]= null;
     }
 
-    public Line[] getimage() {
+    @Override
+    public Node[] getimage() {
         return image_;
     }
 
