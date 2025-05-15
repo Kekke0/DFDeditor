@@ -8,19 +8,20 @@
 <?import javafx.scene.layout.Pane?>
 
 
-<?import Model.Layer?>
-<AnchorPane minHeight="250.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.MainController">
+<?import com.openjfx.dfdeditor.Model.*?>
+<AnchorPane minHeight="250.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.Conrollers.MainController">
    <BorderPane fx:id="BP" layoutY="35.0" minHeight="250.0" minWidth="500.0" prefHeight="673.0" prefWidth="1149.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
 
       <left>
          <Pane prefHeight="675.0" prefWidth="170.0" style="-fx-background-color: #a3c5ff; -fx-border-style: hidden solid solid solid; -fx-border-color: black;" BorderPane.alignment="CENTER">
-            <Button fx:id="dataadd" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#databadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Database" />
-            <Button fx:id="externaladd" layoutX="25.0" layoutY="84.0" mnemonicParsing="false" onAction="#extrnalAdder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="External Element" />
-            <Button fx:id="processadd" layoutX="25.0" layoutY="143.0" mnemonicParsing="false" onAction="#processAdder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Process" />
-            <Button layoutX="25.0" layoutY="200.0" mnemonicParsing="false" onAction="#flowadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Flow" />
-            <BorderPane.margin>
-               <Insets bottom="10.0" />
-            </BorderPane.margin>
+             <Button fx:id="dataadd" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#databadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Database" />
+             <Button fx:id="externaladd" layoutX="25.0" layoutY="84.0" mnemonicParsing="false" onAction="#extrnalAdder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="External Element" />
+             <Button fx:id="processadd" layoutX="25.0" layoutY="143.0" mnemonicParsing="false" onAction="#processAdder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Process" />
+             <Button layoutX="25.0" layoutY="200.0" mnemonicParsing="false" onAction="#flowadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Flow" />
+             <Button layoutX="25.0" layoutY="260.0" mnemonicParsing="false" onAction="#layerprocessadder" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: b8b6b6; -fx-border-radius: 15; -fx-border-width: 2;" text="Layer Process" />
+             <BorderPane.margin>
+                 <Insets bottom="10.0" />
+             </BorderPane.margin>
          </Pane>
       </left>
 

@@ -1,9 +1,7 @@
 package com.openjfx.dfdeditor.FileManagement;
 
-import Model.EditingStage;
-import Model.FileManagementType;
-import Model.Layer;
-import com.openjfx.dfdeditor.EditConrollers.DataeditController;
+import com.openjfx.dfdeditor.Model.FileManagementType;
+import com.openjfx.dfdeditor.Model.Layer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -11,8 +9,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
-
-import static Model.FileManagementType.LOAD;
 
 public class FileMenu extends Stage {
 

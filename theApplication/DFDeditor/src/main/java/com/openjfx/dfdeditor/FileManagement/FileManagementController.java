@@ -1,8 +1,8 @@
 package com.openjfx.dfdeditor.FileManagement;
 
-import DataConverting.JSONConverter;
-import Model.FileManagementType;
-import Model.Layer;
+import com.openjfx.dfdeditor.DataConverting.JSONConverter;
+import com.openjfx.dfdeditor.Model.FileManagementType;
+import com.openjfx.dfdeditor.Model.Layer;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.scene.control.RadioButton;
