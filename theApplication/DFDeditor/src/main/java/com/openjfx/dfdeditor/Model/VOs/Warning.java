@@ -28,7 +28,7 @@ public class Warning extends SolidObject{
 
     @Override
     public String getImagePath() {
-        return "/VObjects/warning-sign.256x256.png";
+        return "/com/openjfx/dfdeditor/VObjects/warning-sign.256x256.png";
     }
 
     @Override

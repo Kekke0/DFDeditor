@@ -1,4 +1,4 @@
-package com.openjfx.dfdeditor.DataConverting.Model;
+package com.openjfx.dfdeditor.Model.DataConverting.Model;
 
 import com.openjfx.dfdeditor.Model.Coordinate;
 

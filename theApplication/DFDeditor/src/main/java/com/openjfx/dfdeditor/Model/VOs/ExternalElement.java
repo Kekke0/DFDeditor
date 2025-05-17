@@ -27,8 +27,8 @@ public class ExternalElement extends MultipliableObject {
     @Override
     public String getImagePath() {
         if(isMultiplied())
-            return "/VObjects/MultiExternal.png";
-        return "/VObjects/External.png";
+            return "/com/openjfx/dfdeditor/VObjects/MultiExternal.png";
+        return "/com/openjfx/dfdeditor/VObjects/External.png";
     }
     @Override
     public String getTypeString(){

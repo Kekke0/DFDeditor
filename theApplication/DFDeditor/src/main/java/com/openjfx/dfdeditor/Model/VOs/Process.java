@@ -1,6 +1,6 @@
 package com.openjfx.dfdeditor.Model.VOs;
 
-import com.openjfx.dfdeditor.DataConverting.Model.JSONVisualObject;
+import com.openjfx.dfdeditor.Model.DataConverting.Model.JSONVisualObject;
 import com.openjfx.dfdeditor.Model.Coordinate;
 import com.openjfx.dfdeditor.Model.Layer;
 import javafx.scene.text.Font;
@@ -83,7 +83,7 @@ public class Process extends SolidObject{
 
     @Override
     public String getImagePath() {
-        return isDissociable() ? "/VObjects/Process.png" : "/VObjects/EProcess.png";
+        return isDissociable() ? "/com/openjfx/dfdeditor/VObjects/Process.png" : "/com/openjfx/dfdeditor/VObjects/EProcess.png";
     }
 
     @Override

@@ -1,6 +1,6 @@
-package com.openjfx.dfdeditor.DataConverting;
+package com.openjfx.dfdeditor.Model.DataConverting;
 
-import com.openjfx.dfdeditor.DataConverting.Model.JSONVisualObject;
+import com.openjfx.dfdeditor.Model.DataConverting.Model.JSONVisualObject;
 import com.openjfx.dfdeditor.Model.Coordinate;
 import com.openjfx.dfdeditor.Model.Layer;
 import com.openjfx.dfdeditor.Model.VOs.*;

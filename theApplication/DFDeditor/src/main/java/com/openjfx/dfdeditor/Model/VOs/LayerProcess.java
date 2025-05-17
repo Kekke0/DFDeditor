@@ -88,7 +88,7 @@ public class LayerProcess extends SolidObject{
 
     @Override
     public String getImagePath() {
-        return  "/VObjects/Process.png";
+        return "/com/openjfx/dfdeditor/VObjects/Process.png";
 
     }
 }

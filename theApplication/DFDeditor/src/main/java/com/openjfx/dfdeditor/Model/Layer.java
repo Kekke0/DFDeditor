@@ -140,8 +140,7 @@ public class Layer extends Pane{
 
     public void addVO(SolidObject vo){
         VOs.add(vo);
-        this.addNodesToChildren(vo.getimage());
-        this.addTexts(vo);
+        this.resetChildren();
     }
 
     public void removeAll(){
@@ -165,8 +164,7 @@ public class Layer extends Pane{
 
     public void addFlow(Flow flow){
         Flows.add(flow);
-        this.addNodesToChildren(flow.getimage());
-        this.addTexts(flow);
+        this.resetChildren();
     }
 
     public void removeFlow(Flow rf){
@@ -185,16 +183,31 @@ public class Layer extends Pane{
         Warnings.remove(warning);
     }
 
-    public void addNodesToChildren(Node[] node){
-        for (Node n : node) {
-            this.getChildren().add(n);
+    public void resetChildren() {
+        for (SolidObject vo: VOs) {
+            this.getChildren().removeAll(vo.getimage());
+            this.removeTexts(vo);
+            this.getChildren().addAll(vo.getimage());
+            this.addTexts(vo);
+        }
+        for (Flow fl: Flows) {
+            this.getChildren().removeAll(fl.getimage());
+            this.removeTexts(fl);
+            this.getChildren().addAll(fl.getimage());
+            this.addTexts(fl);
+        }
+        for (Warning warning: Warnings) {
+            this.getChildren().removeAll(warning.getimage());
+            this.getChildren().addAll(warning.getimage());
         }
     }
 
+    public void addNodesToChildren(Node[] node){
+        this.getChildren().addAll(node);
+    }
+
     public void removeNodesFromChildren(Node[] node){
-        for (Node n : node) {
-            this.getChildren().remove(n);
-        }
+        this.getChildren().removeAll(node);
     }
 
     public void Select(double x, double y) {

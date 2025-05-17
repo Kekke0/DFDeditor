@@ -1,6 +1,6 @@
 package com.openjfx.dfdeditor.FileManagement;
 
-import com.openjfx.dfdeditor.DataConverting.JSONConverter;
+import com.openjfx.dfdeditor.Model.DataConverting.JSONConverter;
 import com.openjfx.dfdeditor.Model.FileManagementType;
 import com.openjfx.dfdeditor.Model.Layer;
 import javafx.embed.swing.SwingFXUtils;

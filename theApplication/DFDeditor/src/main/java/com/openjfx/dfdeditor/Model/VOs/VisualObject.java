@@ -1,6 +1,6 @@
 package com.openjfx.dfdeditor.Model.VOs;
 
-import com.openjfx.dfdeditor.DataConverting.Model.JSONVisualObject;
+import com.openjfx.dfdeditor.Model.DataConverting.Model.JSONVisualObject;
 import com.openjfx.dfdeditor.Model.Coordinate;
 import com.openjfx.dfdeditor.Model.Layer;
 import javafx.scene.Node;
@@ -81,7 +81,7 @@ public abstract class VisualObject {
     }
 
     public String getImagePath() {
-        return "/Menu/inprogress.png";
+        return "/com/openjfx/dfdeditor/Menu/inprogress.png";
     }
 
     public void setBasicCorners(Coordinate maincorner) {
@@ -138,7 +138,7 @@ public abstract class VisualObject {
     }
 
     public void setImageView(ImageView imageView){
-        imageView_=imageView_;
+        this.imageView_=imageView;
     }
 
     public boolean isInside(double x, double y){

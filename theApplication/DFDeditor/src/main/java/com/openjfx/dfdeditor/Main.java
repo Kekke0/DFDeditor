@@ -28,7 +28,7 @@ public class Main extends Application {
         mainController.setKeyBindings(mainscene);
 
         stage.setTitle("DFDeditor");
-        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Menu/inprogress.png")));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/openjfx/dfdeditor/Menu/inprogress.png")));
         stage.getIcons().add(icon);
         stage.setScene(mainscene);
         stage.show();

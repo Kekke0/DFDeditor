@@ -35,9 +35,9 @@
    </BorderPane>
    <ToolBar prefHeight="35.0" prefWidth="939.0" scaleShape="false" style="-fx-background-color: #a3c5ff; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
      <items>
-         <Button fx:id="Save" onAction="#saving" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Save" />
-         <Button fx:id="Load" onAction="#loading" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Load" />
-         <Button fx:id="Export" onAction="#exporting" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Export" />
+         <Button onAction="#saving" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Save" />
+         <Button onAction="#loading" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Load" />
+         <Button onAction="#exporting" prefHeight="20.0" prefWidth="60.0" style="-fx-background-color: none;" text="Export" />
      </items>
       <opaqueInsets>
          <Insets />

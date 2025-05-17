@@ -10,11 +10,6 @@ public class DataBase extends MultipliableObject {
         super(parent, maincorner);
     }
 
-
-    public DataBase(Layer parent, Coordinate maincorner, boolean multiplied) {
-        super(parent, maincorner, multiplied);
-    }
-
     @Override
     public void setBasicCorners(Coordinate maincorner) {
         Coordinate[] corners = new Coordinate[4];
@@ -28,8 +23,8 @@ public class DataBase extends MultipliableObject {
     @Override
     public String getImagePath() {
         if(isMultiplied())
-            return "/VObjects/MultirDBvID.png";
-        return "/VObjects/DBvID.png";
+            return "/com/openjfx/dfdeditor/VObjects/MultirDBvID.png";
+        return "/com/openjfx/dfdeditor/VObjects/DBvID.png";
     }
     @Override
     public String getTypeString(){

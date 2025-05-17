@@ -1,6 +1,6 @@
 package com.openjfx.dfdeditor.Model.VOs;
 
-import com.openjfx.dfdeditor.DataConverting.Model.JSONVisualObject;
+import com.openjfx.dfdeditor.Model.DataConverting.Model.JSONVisualObject;
 import com.openjfx.dfdeditor.Model.Connection;
 import com.openjfx.dfdeditor.Model.Coordinate;
 import com.openjfx.dfdeditor.Model.Layer;
@@ -112,7 +112,7 @@ public class Flow extends VisualObject{
 
     @Override
     public String getImagePath() {
-        return "/VObjects/Flow.png";
+        return "/com/openjfx/dfdeditor/VObjects/Flow.png";
     }
 
     @Override

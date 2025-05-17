@@ -8,7 +8,7 @@ module com.openjfx.dfdeditor {
 
 
     exports com.openjfx.dfdeditor;
-    exports com.openjfx.dfdeditor.DataConverting.Model;
+    exports com.openjfx.dfdeditor.Model.DataConverting.Model;
     exports com.openjfx.dfdeditor.Model;
     exports com.openjfx.dfdeditor.Model.VOs;
     opens com.openjfx.dfdeditor to javafx.fxml;
