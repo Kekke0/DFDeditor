@@ -87,7 +87,7 @@ public abstract class SolidObject extends  VisualObject{
                     getCorners()[2].setY(getCorners()[2].getY() + distance.getY());
                     getCorners()[corner].setY(y);
                 }
-                if (x>=getCorners()[3].getX()+90) {
+                if (x>=getCorners()[2].getX()+90) {
                     getCorners()[1].setX(getCorners()[1].getX() + distance.getX());
                     getCorners()[corner].setX(x);
                 }

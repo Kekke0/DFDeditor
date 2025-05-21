@@ -6,6 +6,8 @@ import javafx.scene.text.Font;
 
 public class DataBase extends MultipliableObject {
 
+    private boolean physical = false;
+
     public DataBase(Layer parent, Coordinate maincorner) {
         super(parent, maincorner);
     }
@@ -22,6 +24,11 @@ public class DataBase extends MultipliableObject {
 
     @Override
     public String getImagePath() {
+        if (isPhysical()) {
+            if(isMultiplied())
+                return "/com/openjfx/dfdeditor/VObjects/MultirDBvFID.png";
+            return "/com/openjfx/dfdeditor/VObjects/DBvFID.png";
+        }
         if(isMultiplied())
             return "/com/openjfx/dfdeditor/VObjects/MultirDBvID.png";
         return "/com/openjfx/dfdeditor/VObjects/DBvID.png";
@@ -57,5 +64,13 @@ public class DataBase extends MultipliableObject {
             addWarningMsg("A Data base id must start with one of the following: \n \"D\" if its digital, an \"M\" if its manual, or a \"T\" if its temporary!\n");
         }
         return errors;
+    }
+
+    public boolean isPhysical() {
+        return physical;
+    }
+
+    public void setPhysical(boolean physical) {
+        this.physical = physical;
     }
 }

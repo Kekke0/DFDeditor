@@ -96,6 +96,48 @@ public class Coordinate {
         return  intersections;
     }
 
+    public static Coordinate[] createParallelLines(Coordinate start,Coordinate end, double distance)
+    {
+        double dx = end.X - start.X;
+        double dy = end.Y - start.Y;
+
+        double length = Math.sqrt((dx*dx) + (dy*dy));
+        double nx = -dy / length;
+        double ny = dx / length;
+        Coordinate[] parallel = new Coordinate[2];
+        parallel[0] = new Coordinate(start.X + distance * nx, start.Y + distance * ny);
+        parallel[1] = new Coordinate(end.X + distance * nx, end.Y + distance * ny);
+        return parallel;
+    }
+
+    // Line1(A1 -----> B1) + Line2(A2 ----> B2)
+    public static Coordinate GetIntersectionOfLines(Coordinate A1,Coordinate B1,Coordinate A2,Coordinate B2)
+    {
+        double den = (A1.X - B1.X)*(A2.Y - B2.Y) - (A1.Y - B1.Y)*(A2.X - B2.X);
+        if (den == 0){
+            return null;
+        }
+
+        double px = ((A1.X*B1.Y - A1.Y*B1.X)*(A2.X - B2.X) - (A1.X - B1.X)*(A2.X*B2.Y - A2.Y*B2.X)) / den;
+        double py = ((A1.X*B1.Y - A1.Y*B1.X)*(A2.Y - B2.Y) - (A1.Y - B1.Y)*(A2.X*B2.Y - A2.Y*B2.X)) / den;
+
+        Coordinate intersectionPoint = new Coordinate(px,py);
+        if (!InBound(intersectionPoint,A1,B1) || !InBound(intersectionPoint,A2,B2)){
+            return null;
+        }
+
+        return intersectionPoint;
+    }
+
+    private static boolean InBound(Coordinate point, Coordinate lineStart,Coordinate lineEnd) {
+        return point.X >= Math.min(lineStart.X, lineEnd.X) && point.X <= Math.max(lineStart.X, lineEnd.X) &&
+                point.Y >= Math.min(lineStart.Y, lineEnd.Y) && point.Y <= Math.max(lineStart.Y, lineEnd.Y);
+    }
+
+    public static Line CreateNewLine(Coordinate[] coordinates){
+        return Coordinate.CreateNewLine(coordinates[0], coordinates[1]);
+    }
+
     public static Line CreateNewLine(Coordinate from, Coordinate to){
         return new Line(from.getX(),from.getY(),to.getX(),to.getY());
     }

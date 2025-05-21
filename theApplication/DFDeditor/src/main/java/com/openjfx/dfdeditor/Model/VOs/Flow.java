@@ -15,6 +15,7 @@ public class Flow extends VisualObject{
     private Coordinate Start;
     private Coordinate End;
     private Boolean onesided;
+    private boolean physical = false;
     private Line[] image_;
 
     public Flow(Layer parent, Coordinate start) {
@@ -86,7 +87,7 @@ public class Flow extends VisualObject{
     }
 
     private void inicalizeImage() {
-        image_ = new Line[5];
+        image_ = new Line[11];
         image_[0]=new Line(Start.getX(), Start.getY(), End.getX(), End.getY());
         image_[1]=new Line(End.getX(), End.getY(),End.getX()-10, End.getY()-10);
         image_[2]=new Line(End.getX(), End.getY(),End.getX()-10, End.getY()+10);
@@ -95,6 +96,21 @@ public class Flow extends VisualObject{
         setOnesided(true);
         image_[3].setVisible(false);
         image_[4].setVisible(false);
+
+        /// Paralels
+        image_[5] = Coordinate.CreateNewLine(Coordinate.createParallelLines(Start,End,-5.0));
+        image_[6] = Coordinate.CreateNewLine(Coordinate.createParallelLines(Start,End,5.0));
+
+        /// Connectors
+        /// 5-1
+        image_[7] = new Line(image_[1].getEndX(), image_[1].getEndY(), image_[5].getEndX(), image_[5].getEndY());
+        /// 5-3
+        image_[8] = new Line(image_[3].getEndX(), image_[3].getEndY(), image_[5].getStartX(), image_[5].getStartY());
+        /// 6-2
+        image_[9]  = new Line(image_[2].getEndX(), image_[2].getEndY(), image_[6].getEndX(), image_[6].getEndY());
+        /// 6-4
+        image_[10]  = new Line(image_[4].getEndX(), image_[4].getEndY(), image_[6].getStartX(), image_[6].getStartY());
+
 
     }
 
@@ -143,32 +159,49 @@ public class Flow extends VisualObject{
     public void aligneArrows() {
         image_[3].setVisible(!isOnesided());
         image_[4].setVisible(!isOnesided());
+        image_[0].setVisible(!isPhysical());
+        for (int i = 5; i < 10; i++) {
+            image_[i].setVisible(isPhysical());
+        }
+        image_[10].setVisible(isPhysical() && !isOnesided());
 
-        Coordinate[] arrows = arrowEnds(End,Start);
-        image_[1].setStartX(End.getX());
-        image_[1].setStartY(End.getY());
-        image_[1].setEndX(arrows[0].getX());
-        image_[1].setEndY(arrows[0].getY());
+        /// Paralels
+        Coordinate[] parallelNeg =  Coordinate.createParallelLines(Start,End,-5.0);
+        Coordinate[] parallelPoz =  Coordinate.createParallelLines(Start,End,5.0);
 
-        image_[2].setStartX(End.getX());
-        image_[2].setStartY(End.getY());
-        image_[2].setEndX(arrows[1].getX());
-        image_[2].setEndY(arrows[1].getY());
+        Coordinate[] EndArrows = GetArrowEnds(End,Start);
+        Coordinate.AlignLinetoCoordinates(image_[1],End,EndArrows[0]);
+        Coordinate.AlignLinetoCoordinates(image_[2],End,EndArrows[1]);
 
-        arrows = arrowEnds(Start,End);
-        image_[3].setStartX(Start.getX());
-        image_[3].setStartY(Start.getY());
-        image_[3].setEndX(arrows[0].getX());
-        image_[3].setEndY(arrows[0].getY());
+        Coordinate[] StartArrows = GetArrowEnds(Start,End);
+        Coordinate.AlignLinetoCoordinates(image_[3],Start,StartArrows[0]);
+        Coordinate.AlignLinetoCoordinates(image_[4],Start,StartArrows[1]);
 
-        image_[4].setStartX(Start.getX());
-        image_[4].setStartY(Start.getY());
-        image_[4].setEndX(arrows[1].getX());
-        image_[4].setEndY(arrows[1].getY());
+        parallelNeg[1] = Coordinate.GetIntersectionOfLines(parallelNeg[0],parallelNeg[1],EndArrows[0],EndArrows[1]);
+        parallelPoz[1] = Coordinate.GetIntersectionOfLines(parallelPoz[0],parallelPoz[1],EndArrows[0],EndArrows[1]);
+        if (!this.isOnesided()) {
+            parallelNeg[0] = Coordinate.GetIntersectionOfLines(parallelNeg[0],parallelNeg[1],StartArrows[0],StartArrows[1]);
+            parallelPoz[0] = Coordinate.GetIntersectionOfLines(parallelPoz[0],parallelPoz[1],StartArrows[0],StartArrows[1]);
+        }
+        Coordinate.AlignLinetoCoordinates(image_[5],parallelNeg[0],parallelNeg[1]);
+        Coordinate.AlignLinetoCoordinates(image_[6],parallelPoz[0],parallelPoz[1]);
+        /// Connectors
+        /// 5-1
+        Coordinate.AlignLinetoCoordinates(image_[7],EndArrows[1],parallelNeg[1]);
+        //image_[7] = new Line(image_[1].getEndX(), image_[1].getEndY(), image_[5].getEndX(), image_[5].getEndY());
+        /// 6-2
+        //image_[9]  = new Line(image_[2].getEndX(), image_[2].getEndY(), image_[6].getEndX(), image_[6].getEndY());
+        Coordinate.AlignLinetoCoordinates(image_[9],EndArrows[0],parallelPoz[1]);
+        /// 5-3
+        //image_[8] = new Line(image_[3].getEndX(), image_[3].getEndY(), image_[5].getStartX(), image_[5].getStartY());
+        Coordinate.AlignLinetoCoordinates(image_[8], isOnesided() ? parallelPoz[0] : StartArrows[0], parallelNeg[0]);
+        /// 6-4
+        //image_[10]  = new Line(image_[4].getEndX(), image_[4].getEndY(), image_[6].getStartX(), image_[6].getStartY());
+        Coordinate.AlignLinetoCoordinates(image_[10],StartArrows[1],parallelPoz[0]);
 
     }
 
-    public static Coordinate[] arrowEnds(Coordinate origo, Coordinate endPoint){
+    public static Coordinate[] GetArrowEnds(Coordinate origo, Coordinate endPoint){
 
         double prec = (15/Coordinate.distanceBetween(origo,endPoint))+1;
 
@@ -239,5 +272,13 @@ public class Flow extends VisualObject{
 
 
         return 1;
+    }
+
+    public boolean isPhysical() {
+        return physical;
+    }
+
+    public void setPhysical(boolean physical) {
+        this.physical = physical;
     }
 }

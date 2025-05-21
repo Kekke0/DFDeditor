@@ -128,6 +128,8 @@ public class Layer extends Pane{
 
         LevelDown_.setLayoutX(selected_.getCorners()[3].getX()-LevelDown_.getPrefWidth()-5);
         LevelDown_.setLayoutY(selected_.getCorners()[3].getY()-LevelDown_.getPrefHeight()-10);
+        this.getChildren().removeAll(cornersGui_);
+        this.getChildren().addAll(cornersGui_);
     }
 
     private void addTexts(VisualObject vo){
@@ -175,7 +177,7 @@ public class Layer extends Pane{
 
     public void addWarning(Warning warning){
         Warnings.add(warning);
-        this.addNodesToChildren(warning.getimage());
+        this.resetChildren();
     }
 
     public void removeWarning(Warning warning){

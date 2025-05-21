@@ -13,8 +13,7 @@ public class DataeditController extends UEditController {
     public CheckBox MultyBox;
     public TextField IDField;
     public TextField NameField;
-    public Button Cancel;
-    public Button Apply;
+    public CheckBox PhysicalBox;
     private DataBase Edited;
     private EditingStage EStage;
 
@@ -25,6 +24,7 @@ public class DataeditController extends UEditController {
         IDField.setText(Edited.getID());
         NameField.setText(Edited.getName());
         MultyBox.setSelected(Edited.isMultiplied());
+        PhysicalBox.setSelected(Edited.isPhysical());
     }
     public void addStage(EditingStage stage){
         EStage = stage;
@@ -38,6 +38,7 @@ public class DataeditController extends UEditController {
         Edited.setID(IDField.getText());
         Edited.setName(NameField.getText());
         Edited.setMultiplied(MultyBox.isSelected());
+        Edited.setPhysical(PhysicalBox.isSelected());
         Edited.setImage();
         Edited.placeTexts();
         EStage.close();
