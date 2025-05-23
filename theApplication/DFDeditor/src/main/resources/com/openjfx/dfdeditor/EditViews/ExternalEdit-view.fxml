@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #a3c5ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.Conrollers.ExternalEditController">
+<AnchorPane prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #a3c5ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.openjfx.dfdeditor.Controllers.ExternalEditController">
     <children>
         <CheckBox fx:id="MultyBox" contentDisplay="RIGHT" layoutX="90.0" layoutY="179.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="162.0" text="Multiplyable" AnchorPane.rightAnchor="89.6">
             <font>

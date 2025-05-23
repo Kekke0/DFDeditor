@@ -1,7 +1,7 @@
 package com.openjfx.dfdeditor.Model;
 
 import com.openjfx.dfdeditor.Model.VOs.VisualObject;
-import com.openjfx.dfdeditor.Conrollers.*;
+import com.openjfx.dfdeditor.Controllers.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -58,10 +58,10 @@ public class EditingStage extends Stage {
     private String getView() {
         switch (EditedVO.getTypeString()) {
             case "DB" ->{ return "/com/openjfx/dfdeditor/EditViews/DataEdit-view.fxml";}
-            case "EE" ->{return "/com/openjfx/dfdeditor/EditViews/ExternalEdit-view.fxml";}
-            case "PR" ->{return "/com/openjfx/dfdeditor/EditViews/ProcessEdit-view.fxml";}
-            case "FL" ->{return "/com/openjfx/dfdeditor/EditViews/FlowEdit-view.fxml";}
-            default -> {return "/com/openjfx/dfdeditor/EditViews/UEdit-view.fxml";}
+            case "EE" ->{ return "/com/openjfx/dfdeditor/EditViews/ExternalEdit-view.fxml";}
+            case "PR" ->{ return "/com/openjfx/dfdeditor/EditViews/ProcessEdit-view.fxml";}
+            case "FL" ->{ return "/com/openjfx/dfdeditor/EditViews/FlowEdit-view.fxml";}
+            default ->  { return "/com/openjfx/dfdeditor/EditViews/UEdit-view.fxml";}
         }
     }
 }

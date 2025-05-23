@@ -14,8 +14,8 @@ module com.openjfx.dfdeditor {
     opens com.openjfx.dfdeditor to javafx.fxml;
     opens com.openjfx.dfdeditor.Model to javafx.fxml;
     opens com.openjfx.dfdeditor.Model.VOs to javafx.fxml;
-    exports com.openjfx.dfdeditor.Conrollers;
-    opens com.openjfx.dfdeditor.Conrollers to javafx.fxml;
+    exports com.openjfx.dfdeditor.Controllers;
+    opens com.openjfx.dfdeditor.Controllers to javafx.fxml;
     exports com.openjfx.dfdeditor.FileManagement;
     opens com.openjfx.dfdeditor.FileManagement to javafx.fxml;
 }

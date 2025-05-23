@@ -12,6 +12,7 @@ import java.util.Map;
 
 public abstract class SolidObject extends  VisualObject{
     private final Map<Flow, Connection> Connections = new HashMap<>();
+    private OpenProcess owner_;
 
     public SolidObject(Layer parent, Coordinate maincorner) {
         super(parent,maincorner);
@@ -130,5 +131,42 @@ public abstract class SolidObject extends  VisualObject{
             addWarningMsg("Missing Name");
         }
         return errors;
+    }
+
+
+    public void ChangePosition(Coordinate newPosition, boolean storable) {
+        if (storable) {
+            this.ChangePosition(newPosition);
+        } else {
+            super.ChangePosition(newPosition);
+        }
+    }
+
+    @Override
+    public void ChangePosition(Coordinate newPosition) {
+        super.ChangePosition(newPosition);
+        OpenProcess owner = getLayer().IsInsideOfOpenProcess(newPosition);
+        this.setOwner(owner);
+        getLayer().HighlightInnerLines(owner);
+
+    }
+
+    public SolidObject getOwner() {
+        return owner_;
+    }
+
+    public void setOwner(OpenProcess owner) {
+        if (this.owner_!= null){
+            this.owner_.RemoveStored(this);
+        }
+        this.owner_ = owner;
+        if (owner != null) {
+            owner.AddStored(this);
+        }
+    }
+
+    public void ReAdd() {
+        getLayer().removeVO(this);
+        getLayer().addVO(this);
     }
 }

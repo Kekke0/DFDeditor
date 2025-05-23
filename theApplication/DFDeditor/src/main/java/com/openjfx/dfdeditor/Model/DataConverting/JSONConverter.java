@@ -18,14 +18,12 @@ public class JSONConverter {
     }
 
 
-    public static VisualObject JSONtoVO(Layer parent,String json) throws IOException {
+    public static void JSONtoVO(Layer parent,String json) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         JSONVisualObject map
                 = objectMapper.readValue(json, new TypeReference<>(){});
 
-        VisualObject importedVO = JVOToVO(parent, map);
-
-        return importedVO;
+        JVOToVO(parent, map);
     }
 
     public static VisualObject JVOToVO(Layer parent, JSONVisualObject map) throws IOException {
@@ -54,25 +52,39 @@ public class JSONConverter {
                 db.setID(ID);
                 db.setName(Name);
                 db.setMultiplied(map.getMultiplied());
+                db.setPhysical(map.getDissociable());
                 importedVO = db;
             }
             case "EE"->{
                 ExternalElement ee = new ExternalElement(parent, firstCorner);
                 ee.setName(Name);
+                ee.setID(ID);
                 ee.setMultiplied((map.getMultiplied()));
                 importedVO = ee;
             }
             case "FL"->{
                 Flow fl = new Flow(parent,firstCorner);
                 fl.setName(Name);
+                fl.setPhysical(map.getDissociable());
                 importedVO = fl;
+            }
+            case "OP"->{
+                OpenProcess op = new OpenProcess(parent,firstCorner);
+                op.setName(Name);
+                op.setID(ID);
+                importedVO = op;
             }
             default->{
                 throw new IOException("Unrecognized 'Type' in save file! ("+ map.getType() +")");
             }
         }
-
-        importedVO.setCorners(map.getCorners());
+        importedVO.AddToLayer(parent);
+        parent.setSelected(importedVO);
+        parent.ChangeSelectedPosition(map.getCorners()[0]);
+        for (int i = 0; i < map.getCorners().length; i++) {
+            importedVO.ResizeCorners(i, map.getCorners()[i].getX(), map.getCorners()[i].getY());
+        }
+        parent.setSelected(null);
 
         return importedVO;
     }

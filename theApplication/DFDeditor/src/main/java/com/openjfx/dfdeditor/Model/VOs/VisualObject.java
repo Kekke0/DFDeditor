@@ -33,10 +33,10 @@ public abstract class VisualObject {
         resizeImageView();
     }
 
-    public void ChangePosition(Coordinate newPozition) {
-        if (newPozition.getX()<0) newPozition.setX(0);
-        if (newPozition.getY()<0) newPozition.setY(0);
-        Coordinate distance= Distancing(getCorners()[0],newPozition);
+    public void ChangePosition(Coordinate newPosition) {
+        if (newPosition.getX()<0) newPosition.setX(0);
+        if (newPosition.getY()<0) newPosition.setY(0);
+        Coordinate distance= Distancing(getCorners()[0],newPosition);
         for (Coordinate corner: getCorners()) {
             corner.add(distance);
         }

@@ -1,11 +1,11 @@
-package com.openjfx.dfdeditor.Conrollers;
+package com.openjfx.dfdeditor.Controllers;
 
 import com.openjfx.dfdeditor.Model.Coordinate;
 import com.openjfx.dfdeditor.Model.FileManagementType;
 import com.openjfx.dfdeditor.Model.Layer;
 import com.openjfx.dfdeditor.Model.VOs.*;
 import com.openjfx.dfdeditor.Model.VOs.Process;
-import com.openjfx.dfdeditor.Conrollers.ToolHandlers.Setter;
+import com.openjfx.dfdeditor.Controllers.ToolHandlers.Setter;
 import com.openjfx.dfdeditor.FileManagement.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -61,7 +61,7 @@ public class MainController {
     }
 
     public void layerprocessadder(ActionEvent actionEvent) {
-        setter_.SetToAddMode(Drawable, new LayerProcess(Drawable,new Coordinate(0,0)));
+        setter_.SetToAddMode(Drawable, new OpenProcess(Drawable,new Coordinate(0,0)));
     }
 
     public void BackingUp() {

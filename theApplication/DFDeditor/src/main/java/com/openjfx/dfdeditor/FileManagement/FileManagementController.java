@@ -88,12 +88,13 @@ public class FileManagementController {
             String str = new String(data, StandardCharsets.UTF_8);
             str = str.substring(1,str.length()-1);
             for (String svo: str.split(";")) {
-                JSONConverter.JSONtoVO(LAYER,svo).AddToLayer(LAYER);
+                JSONConverter.JSONtoVO(LAYER,svo);
             }
         } catch (IOException e) {
             Error.setText("File not found!");
             return;
         }
+        LAYER.resetChildren();
 
         STAGE.close();
     }
@@ -114,7 +115,7 @@ public class FileManagementController {
             for (int i = 1; i < layer.getVOs().size(); i++) {
                 writer.print(";" + JSONConverter.VOtoJSON(layer.getVOs().get(i)));
             }
-            for (int i = 1; i < layer.getFlows().size(); i++) {
+            for (int i = 0; i < layer.getFlows().size(); i++) {
                 writer.print(";" + JSONConverter.VOtoJSON(layer.getFlows().get(i)));
             }
             writer.print("]");

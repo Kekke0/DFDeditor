@@ -1,4 +1,4 @@
-package com.openjfx.dfdeditor.Conrollers;
+package com.openjfx.dfdeditor.Controllers;
 
 import com.openjfx.dfdeditor.Model.EditingStage;
 import com.openjfx.dfdeditor.Model.VOs.Flow;

@@ -21,6 +21,10 @@ public class Coordinate {
         setY(corner.getY());
     }
 
+    public static Coordinate Add(Coordinate corner, Coordinate distance) {
+        return new Coordinate(corner.getX() + distance.getX(), corner.getY() + distance.getY());
+    }
+
     public double getX() {
         return X;
     }
@@ -129,9 +133,9 @@ public class Coordinate {
         return intersectionPoint;
     }
 
-    private static boolean InBound(Coordinate point, Coordinate lineStart,Coordinate lineEnd) {
-        return point.X >= Math.min(lineStart.X, lineEnd.X) && point.X <= Math.max(lineStart.X, lineEnd.X) &&
-                point.Y >= Math.min(lineStart.Y, lineEnd.Y) && point.Y <= Math.max(lineStart.Y, lineEnd.Y);
+    public static boolean InBound(Coordinate point, Coordinate Start,Coordinate End) {
+        return point.X >= Math.min(Start.X, End.X) && point.X <= Math.max(Start.X, End.X) &&
+                point.Y >= Math.min(Start.Y, End.Y) && point.Y <= Math.max(Start.Y, End.Y);
     }
 
     public static Line CreateNewLine(Coordinate[] coordinates){

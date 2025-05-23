@@ -177,14 +177,19 @@ public class Flow extends VisualObject{
         Coordinate.AlignLinetoCoordinates(image_[3],Start,StartArrows[0]);
         Coordinate.AlignLinetoCoordinates(image_[4],Start,StartArrows[1]);
 
-        parallelNeg[1] = Coordinate.GetIntersectionOfLines(parallelNeg[0],parallelNeg[1],EndArrows[0],EndArrows[1]);
-        parallelPoz[1] = Coordinate.GetIntersectionOfLines(parallelPoz[0],parallelPoz[1],EndArrows[0],EndArrows[1]);
+        Coordinate negIntersection1 = Coordinate.GetIntersectionOfLines(parallelNeg[0],parallelNeg[1],EndArrows[0],EndArrows[1]);
+        parallelNeg[1] = negIntersection1== null? parallelNeg[1]:negIntersection1;
+        Coordinate pozIntersection1 =  Coordinate.GetIntersectionOfLines(parallelPoz[0],parallelPoz[1],EndArrows[0],EndArrows[1]);
+        parallelPoz[1] = pozIntersection1 == null? parallelPoz[1]:pozIntersection1;
         if (!this.isOnesided()) {
-            parallelNeg[0] = Coordinate.GetIntersectionOfLines(parallelNeg[0],parallelNeg[1],StartArrows[0],StartArrows[1]);
-            parallelPoz[0] = Coordinate.GetIntersectionOfLines(parallelPoz[0],parallelPoz[1],StartArrows[0],StartArrows[1]);
+            Coordinate negIntersection0 = Coordinate.GetIntersectionOfLines(parallelNeg[0],parallelNeg[1],StartArrows[0],StartArrows[1]);
+            parallelNeg[0] = negIntersection0 == null ? parallelNeg[0] :negIntersection0;
+            Coordinate pozIntersection0 = Coordinate.GetIntersectionOfLines(parallelPoz[0],parallelPoz[1],StartArrows[0],StartArrows[1]);
+            parallelPoz[0] = pozIntersection0 == null ? parallelPoz[0] :pozIntersection0;
         }
         Coordinate.AlignLinetoCoordinates(image_[5],parallelNeg[0],parallelNeg[1]);
-        Coordinate.AlignLinetoCoordinates(image_[6],parallelPoz[0],parallelPoz[1]);
+        Coordinate.AlignLinetoCoordinates(image_[6], parallelPoz[0], parallelPoz[1]);
+
         /// Connectors
         /// 5-1
         Coordinate.AlignLinetoCoordinates(image_[7],EndArrows[1],parallelNeg[1]);
@@ -219,10 +224,10 @@ public class Flow extends VisualObject{
         MoveConnecteds();
     }
 
-    public void ChangePosition(Coordinate maincorner) {
-        if (maincorner.getX()<0) maincorner.setX(0);
-        if (maincorner.getY()<0) maincorner.setY(0);
-        Coordinate distance= Distancing(getCorners()[0],maincorner);
+    public void ChangePosition(Coordinate newPosition) {
+        if (newPosition.getX()<0) newPosition.setX(0);
+        if (newPosition.getY()<0) newPosition.setY(0);
+        Coordinate distance= Distancing(getCorners()[0], newPosition);
         for (Coordinate corner: getCorners()) {
             corner.add(distance);
         }
@@ -247,7 +252,7 @@ public class Flow extends VisualObject{
     }
 
     public JSONVisualObject transformToJVO() throws IOException {
-        return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners(), onesided);
+        return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners(), isOnesided(), isPhysical());
     }
 
     public void MoveConnecteds() {

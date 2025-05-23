@@ -1,8 +1,11 @@
 package com.openjfx.dfdeditor.Model.VOs;
 
 import com.openjfx.dfdeditor.Model.Coordinate;
+import com.openjfx.dfdeditor.Model.DataConverting.Model.JSONVisualObject;
 import com.openjfx.dfdeditor.Model.Layer;
 import javafx.scene.text.Font;
+
+import java.io.IOException;
 
 public class DataBase extends MultipliableObject {
 
@@ -72,5 +75,10 @@ public class DataBase extends MultipliableObject {
 
     public void setPhysical(boolean physical) {
         this.physical = physical;
+    }
+
+    @Override
+    public JSONVisualObject transformToJVO() throws IOException {
+        return new JSONVisualObject(getTypeString(),getID(), getName(), getCorners(), isMultiplied(), isPhysical());
     }
 }

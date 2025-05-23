@@ -1,6 +1,6 @@
 package com.openjfx.dfdeditor;
 
-import com.openjfx.dfdeditor.Conrollers.MainController;
+import com.openjfx.dfdeditor.Controllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -35,6 +35,15 @@ public class JSONVisualObject {
         Multiplied = multiplied;
     }
 
+    public JSONVisualObject(String type, String ID, String name, Coordinate[] corners, Boolean multiplied, Boolean physical) {
+        Type = type;
+        this.ID = ID;
+        Name = name;
+        Corners = corners;
+        Multiplied = multiplied;
+        Dissociable = physical;
+    }
+
     public String getType() {
         return Type;
     }

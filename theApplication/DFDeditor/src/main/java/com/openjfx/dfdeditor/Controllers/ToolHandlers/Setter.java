@@ -1,4 +1,4 @@
-package com.openjfx.dfdeditor.Conrollers.ToolHandlers;
+package com.openjfx.dfdeditor.Controllers.ToolHandlers;
 
 import com.openjfx.dfdeditor.Model.*;
 import com.openjfx.dfdeditor.Model.VOs.*;
@@ -13,6 +13,7 @@ public class Setter {
 
     public void SetToMouseMode(Layer layer){
         layer.setActiveTool(Tool.MOUSE);
+        layer.HighlightInnerLines(null);
 
         layer.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
@@ -24,6 +25,7 @@ public class Setter {
             public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getButton() == MouseButton.PRIMARY) {
                     layer.Select(mouseEvent.getX(), mouseEvent.getY());
+
                 } else if (mouseEvent.getButton()==MouseButton.SECONDARY){
                     if(layer.getSelected() != null && layer.getSelected().isInside(mouseEvent.getX(), mouseEvent.getY())){
                         try {
@@ -87,9 +89,9 @@ public class Setter {
         layer.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                    Coordinate moveto = new Coordinate(mouseEvent.getX(), mouseEvent.getY());
-                    moveto.add(startingPosition);
-                    layer.ChangeSelectedPosition(moveto);
+                Coordinate moveto = new Coordinate(mouseEvent.getX(), mouseEvent.getY());
+                moveto.add(startingPosition);
+                layer.ChangeSelectedPosition(moveto);
             }
         });
 
@@ -145,7 +147,7 @@ public class Setter {
         layer.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                SolidObject connected = layer.IsInsideOfObject(mouseEvent.getX(), mouseEvent.getY());
+                SolidObject connected = layer.IsInsideOfConnectableObject(mouseEvent.getX(), mouseEvent.getY());
                 Flow connecting = (Flow) layer.getSelected();
                 if (connected == null){
                     layer.ResizeSelected(corner,mouseEvent.getX(), mouseEvent.getY());
@@ -154,6 +156,7 @@ public class Setter {
                 }
 
                 Connection cn = Connection.createConnectionTo(connecting,corner,connected,new Coordinate(mouseEvent.getX(), mouseEvent.getY()));
+                layer.AlignGuiToCorners();
                 cn.AlignToConnected();
             }
         });
@@ -161,7 +164,7 @@ public class Setter {
         layer.setOnMouseReleased(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                VisualObject connected = layer.IsInsideOfObject(mouseEvent.getX(), mouseEvent.getY());
+                VisualObject connected = layer.IsInsideOfConnectableObject(mouseEvent.getX(), mouseEvent.getY());
                 if (connected != null){
                     layer.setSelected(connected);
                 }
@@ -173,6 +176,7 @@ public class Setter {
 
     public void SetToAddMode(Layer layer, VisualObject object){
         layer.setActiveTool(Tool.ADD);
+        layer.setSelected(null);
 
         layer.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

@@ -43,8 +43,8 @@ public class Warning extends SolidObject{
         setCorners(corners);
     }
 
-    public void ChangePosition(Coordinate maincorner) {
-        super.ChangePosition(getRealCorner(maincorner));
+    public void ChangePosition(Coordinate newPosition) {
+        super.ChangePosition(getRealCorner(newPosition));
     }
 
     private Coordinate getRealCorner(Coordinate maincorner) {

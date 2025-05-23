@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class Layer extends Pane{
 
     private int Level;
     private Rectangle[] cornersGui_;
+    private Line[] highlighters_ = null;
     private Button LevelDown_;
     private Button BackUp_;
 
@@ -105,7 +107,7 @@ public class Layer extends Pane{
         return -1;
     }
 
-    private void AlignGuiToCorners() {
+    public void AlignGuiToCorners() {
         if (selected_.getTypeString().equals("FL")){
             cornersGui_[0].setX(selected_.getCorners()[0].getX()-5);
             cornersGui_[0].setY(selected_.getCorners()[0].getY()-5);
@@ -142,6 +144,11 @@ public class Layer extends Pane{
 
     public void addVO(SolidObject vo){
         VOs.add(vo);
+        this.resetChildren();
+    }
+
+    public void addVO(SolidObject vo, int place){
+        VOs.add(place,vo);
         this.resetChildren();
     }
 
@@ -202,6 +209,10 @@ public class Layer extends Pane{
             this.getChildren().removeAll(warning.getimage());
             this.getChildren().addAll(warning.getimage());
         }
+        if (selected_ != null) {
+            this.getChildren().removeAll(cornersGui_);
+            this.getChildren().addAll(cornersGui_);
+        }
     }
 
     public void addNodesToChildren(Node[] node){
@@ -213,7 +224,7 @@ public class Layer extends Pane{
     }
 
     public void Select(double x, double y) {
-        if(selected_ !=null && selected_.isInside(x,y)) return;
+        // if(selected_ !=null && selected_.isInside(x,y)) return;
         for(Warning warning: Warnings){
             if (warning.isInside(x,y)){
                 warning.showDialoge();
@@ -227,9 +238,16 @@ public class Layer extends Pane{
                 return;
             }
         }
-        for (VisualObject VO: VOs) {
+
+        List<SolidObject> reversed = new ArrayList<>();
+        for (int i = VOs.size()-1; i >= 0 ; i--) {
+            reversed.add(VOs.get(i));
+        }
+        for (SolidObject VO: reversed) {
             if (VO.isInside(x,y)){
                 setSelected(VO);
+                VO.ReAdd();
+                this.resetChildren();
                 return;
             }
         }
@@ -245,11 +263,31 @@ public class Layer extends Pane{
         return null;
     }
 
-    public SolidObject IsInsideOfObject(double x, double y) {
+    public SolidObject IsInsideOfConnectableObject(double x, double y) {
 
         for (SolidObject VO: VOs) {
-            if (VO.isInside(x,y)){
+            if (VO.isInside(x,y) &&  !VO.getTypeString().equals("OP")){
                 return VO;
+            }
+        }
+        return null;
+    }
+
+    public OpenProcess IsInsideOfOpenProcess(Coordinate coordinate) {
+        return this.IsInsideOfOpenProcess(coordinate.getX(), coordinate.getY());
+    }
+
+    public OpenProcess IsInsideOfOpenProcess(double x, double y) {
+
+        for (SolidObject VO: VOs) {
+            if (VO.equals(getSelected())){
+                continue;
+            }
+            if(VO.isInside(x,y) && VO.getTypeString().equals("OP")){
+                OpenProcess op =(OpenProcess) VO;
+                if(Coordinate.InBound(new Coordinate(x,y),op.getInsideCorners()[0], op.getInsideCorners()[3])){
+                    return op;
+                }
             }
         }
         return null;
@@ -341,5 +379,32 @@ public class Layer extends Pane{
 
     public Button getBackUp() {
         return BackUp_;
+    }
+
+    public void HighlightInnerLines(OpenProcess owner) {
+        if (highlighters_ != null){
+            this.getChildren().removeAll(highlighters_);
+        }
+        if (owner == null){
+            highlighters_ = null;
+            return;
+        }
+        highlighters_ = new Line[4];
+        Coordinate[] corners = owner.getInsideCorners();
+
+        highlighters_[0] = Coordinate.CreateNewLine(corners[0],corners[1]);
+        highlighters_[0].setStyle("-fx-stroke: red;");
+        highlighters_[0].setStrokeWidth(2);
+        highlighters_[1] = Coordinate.CreateNewLine(corners[0],corners[2]);
+        highlighters_[1].setStyle("-fx-stroke: red;");
+        highlighters_[1].setStrokeWidth(2);
+        highlighters_[2] = Coordinate.CreateNewLine(corners[2],corners[3]);
+        highlighters_[2].setStyle("-fx-stroke: red;");
+        highlighters_[2].setStrokeWidth(2);
+        highlighters_[3] = Coordinate.CreateNewLine(corners[1],corners[3]);
+        highlighters_[3].setStyle("-fx-stroke: red;");
+        highlighters_[3].setStrokeWidth(2);
+
+        this.getChildren().addAll(highlighters_);
     }
 }

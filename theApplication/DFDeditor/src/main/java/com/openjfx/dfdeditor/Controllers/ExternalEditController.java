@@ -1,6 +1,7 @@
-package com.openjfx.dfdeditor.Conrollers;
+package com.openjfx.dfdeditor.Controllers;
+
 import com.openjfx.dfdeditor.Model.EditingStage;
-import com.openjfx.dfdeditor.Model.VOs.Process;
+import com.openjfx.dfdeditor.Model.VOs.ExternalElement;
 import com.openjfx.dfdeditor.Model.VOs.VisualObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
-public class ProcessEditController {
-    @FXML
-    public TextField OrgUnit;
-    Process Edited;
+public class ExternalEditController {
+    ExternalElement Edited;
     @FXML
     public CheckBox MultyBox;
     @FXML
@@ -32,21 +31,17 @@ public class ProcessEditController {
         EStage.close();
     }
     public void setEdited(VisualObject vo){
-        Edited = (Process) vo;
+        Edited = (ExternalElement) vo;
         IDField.setText(Edited.getID());
         NameField.setText(Edited.getName());
-        MultyBox.setSelected(Edited.isDissociable());
-        OrgUnit.setText(Edited.getOrgUnit());
-
+        MultyBox.setSelected(Edited.isMultiplied());
     }
 
     public void onApply(ActionEvent e) {
         Edited.setID(IDField.getText());
         Edited.setName(NameField.getText());
-        Edited.setDissociable(MultyBox.isSelected());
-        Edited.setOrgUnit(OrgUnit.getText());
+        Edited.setMultiplied(MultyBox.isSelected());
         Edited.setImage();
-        Edited.getLayer().setSelected(Edited);
         EStage.close();
     }
 }
