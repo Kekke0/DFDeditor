@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="DFDeditor" target="18" />
       <module name="wrapper" target="1.5" />
     </bytecodeTargetLevel>
   </component>

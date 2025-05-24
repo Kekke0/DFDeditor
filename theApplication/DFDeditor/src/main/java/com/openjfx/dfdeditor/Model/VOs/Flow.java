@@ -115,8 +115,9 @@ public class Flow extends VisualObject{
     }
 
     public boolean isInside(double x, double y){
-        return (getStart().getX() + 20 > x && getStart().getY() + 20 > y && getStart().getX() - 20 < x && getStart().getY() - 20 < y)
-                || (getEnd().getX() + 20 > x && getEnd().getY() + 20 > y && getEnd().getX() - 20 < x && getEnd().getY() - 20 < y);
+        boolean inside = Coordinate.InBound(new Coordinate(x,y),new Coordinate(image_[6].getStartX(),image_[6].getStartY()),new Coordinate(image_[5].getEndX(),image_[5].getEndY()));
+        return inside | (getStart().getX() + 15 > x && getStart().getY() + 15 > y && getStart().getX() - 15 < x && getStart().getY() - 15 < y)
+                || (getEnd().getX() + 15 > x && getEnd().getY() + 15 > y && getEnd().getX() - 15 < x && getEnd().getY() - 15 < y);
     }
     public Coordinate[] getCorners(){
         Coordinate[] corners= new Coordinate[2];

@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9fdc967-8014-486a-ba5c-acf9407b2c87" name="Changes" comment="Refactoring of old code segments&#10;&#10;Welcome back ;)">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Layer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/VOs/VisualObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ToolHandlers/Setter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ToolHandlers/Setter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/FileManagement/FileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/FileManagement/FileMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Model/EditingStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Model/EditingStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Model/VOs/Flow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Model/VOs/Flow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/openjfx/dfdeditor/Menu/inprogress.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +32,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Kekke0"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Kekke0/DFDeditor.git",
+    "accountId": "17c3974b-2674-4112-a832-a162e2295e0e"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/openjfx/dfdeditor/Main.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/module-info.java" root0="FORCE_HIGHLIGHTING" />
@@ -37,6 +51,16 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2BtHUL0NJi0oxOAUYenUQ2LtE7j" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -45,10 +69,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.com.openjfx.dfdeditor.Main.executor": "Run",
+    "JAR Application.snapshot.executor": "Run",
+    "Maven.DFDeditor [clean].executor": "Run",
+    "Maven.DFDeditor [package].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Szakdoga/theApplication/DFDeditor/target/TorokGergo_2025_test.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Kekke\DFDeditor\theApplication\DFDeditor\src\main\resources\com\openjfx\dfdeditor\EditViews" />
@@ -61,32 +100,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.com.openjfx.dfdeditor.Main">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.openjfx.dfdeditor.HelloApplication" />
-      <module name="DFDeditor" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.openjfx.dfdeditor.EditConrollers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ModelTest.TestMain" />
-      <module name="DFDeditor" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="com.openjfx.dfdeditor.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.openjfx.dfdeditor.Main" />
       <module name="DFDeditor" />
@@ -94,12 +107,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="snapshot" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/TorokGergo_2025_test.jar" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\gerit\Downloads\openjfx-21.0.7_windows-x64_bin-sdk\javafx-sdk-21.0.7\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="WORKING_DIRECTORY" value="D:\Szakdoga\theApplication\DFDeditor" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="22" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.com.openjfx.dfdeditor.Main" />
+      <item itemvalue="JAR Application.snapshot" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.com.openjfx.dfdeditor.Main" />
-        <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -134,6 +166,7 @@
       <workItem from="1678894783519" duration="5108000" />
       <workItem from="1679516683811" duration="648000" />
       <workItem from="1679518796067" duration="899000" />
+      <workItem from="1748081896113" duration="3791000" />
     </task>
     <task id="LOCAL-00001" summary="JavaFX start">
       <created>1657747635984</created>
@@ -221,7 +254,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="JavaFX start" />

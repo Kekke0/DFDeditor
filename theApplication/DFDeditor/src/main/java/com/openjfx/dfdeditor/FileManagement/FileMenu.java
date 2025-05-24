@@ -23,7 +23,7 @@ public class FileMenu extends Stage {
         controller.setLayer(layer);
 
         this.setTitle("File manager");
-        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/openjfx/dfdeditor/Menu/inprogress.png")));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/openjfx/dfdeditor/Menu/editorIcon.png")));
         this.getIcons().add(icon);
         this.setScene(scene);
         this.show();

@@ -21,7 +21,7 @@ public class EditingStage extends Stage {
         setControllerBasics(loader);
 
         this.setTitle("Editor");
-        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/openjfx/dfdeditor/Menu/inprogress.png")));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/com/openjfx/dfdeditor/Menu/editorIcon.png")));
         this.getIcons().add(icon);
         this.setScene(editscene);
         this.show();
