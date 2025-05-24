@@ -126,9 +126,13 @@ public abstract class SolidObject extends  VisualObject{
         super.Check();
 
         int errors = 0;
-        if(getName()== null){
+        if(getName() == null || getName().isEmpty()){
             errors++;
             addWarningMsg("Missing Name");
+        }
+        if(getID() == null || getID().isEmpty()){
+            errors++;
+            addWarningMsg("Missing ID  ");
         }
         return errors;
     }

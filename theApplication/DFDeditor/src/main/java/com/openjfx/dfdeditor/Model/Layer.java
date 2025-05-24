@@ -56,14 +56,6 @@ public class Layer extends Pane{
         this.parentLayer_ = parentLayer_;
     }
 
-    public void setLevel(int level) {
-        this.Level = level;
-    }
-
-    public int getLevel() {
-        return Level;
-    }
-
     public Button getLevelDown() {
         return LevelDown_;
     }
@@ -254,15 +246,6 @@ public class Layer extends Pane{
         setSelected(null);
     }
 
-    public Warning IsInsideOfWarning(double x, double y) {
-        for (Warning war : getWarnings()) {
-            if (war.isInside(x,y)){
-                return war;
-            }
-        }
-        return null;
-    }
-
     public SolidObject IsInsideOfConnectableObject(double x, double y) {
 
         for (SolidObject VO: VOs) {
@@ -348,16 +331,16 @@ public class Layer extends Pane{
         return getVOs().isEmpty() && getFlows().isEmpty();
     }
 
-    public Tool getActiveTool() {
-        return ActiveTool;
-    }
-
     public void setActiveTool(Tool activeTool) {
         ActiveTool = activeTool;
     }
 
     public int Check() {
         int created = 0;
+        for (Warning warning: Warnings) {
+            removeNodesFromChildren(warning.getimage());
+        }
+        this.getWarnings().clear();
         for (VisualObject vo: VOs) {
             created += vo.Check();
         }

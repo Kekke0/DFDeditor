@@ -151,9 +151,13 @@ public class Flow extends VisualObject{
 
     @Override
     protected void placeTexts() {
-        getTexts()[1].setFont(new Font(20));
+        getTexts()[1].setFont(new Font(15));
         getTexts()[1].setX(this.getCorners()[0].getX() + (-20) + (this.getCorners()[1].getX()-this.getCorners()[0].getX())/2);
         getTexts()[1].setY(this.getCorners()[0].getY() + 20 +(this.getCorners()[1].getY()-this.getCorners()[0].getY())/2);
+
+        getTexts()[0].setFont(new Font(15));
+        getTexts()[0].setX(this.getCorners()[0].getX() + (-20) + (this.getCorners()[1].getX()-this.getCorners()[0].getX())/2);
+        getTexts()[0].setY(this.getCorners()[0].getY() - 10 +(this.getCorners()[1].getY()-this.getCorners()[0].getY())/2);
     }
 
     public void aligneArrows() {
@@ -276,7 +280,7 @@ public class Flow extends VisualObject{
         }
 
 
-        return 1;
+        return error;
     }
 
     public boolean isPhysical() {

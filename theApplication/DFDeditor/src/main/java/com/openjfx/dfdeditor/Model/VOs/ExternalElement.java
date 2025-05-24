@@ -36,8 +36,8 @@ public class ExternalElement extends MultipliableObject {
     }
 
     protected void placeTexts() {
-        getTexts()[1].setFont(new Font(20));
-        getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX() - this.getCorners()[0].getX()) / 4);
+        getTexts()[1].setFont(new Font(15));
+        getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX() - this.getCorners()[0].getX()) / 5);
         getTexts()[1].setY(this.getCorners()[0].getY() + (this.getCorners()[3].getY() - this.getCorners()[0].getY()) / 1.5);
     }
 
@@ -49,10 +49,5 @@ public class ExternalElement extends MultipliableObject {
     public void setName(String name) {
         super.setName(name);
         getTexts()[1].setText(getID() + " " + name);
-    }
-    @Override
-    public int Check(){
-        int errors = super.Check();
-        return errors;
     }
 }

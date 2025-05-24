@@ -94,14 +94,14 @@ public class OpenProcess extends SolidObject{
 
     @Override
     protected void placeTexts() {
-        getTexts()[1].setFont(new Font(20));
+        getTexts()[1].setFont(new Font(15));
         getTexts()[1].setX(this.getCorners()[0].getX() + (this.getCorners()[3].getX()-this.getCorners()[0].getX())*(1.3)/3);
-        getTexts()[1].setY(this.getCorners()[0].getY() + 25);
+        getTexts()[1].setY(this.getCorners()[0].getY() + 22);
         getTexts()[1].setStrokeWidth(100);
 
-        getTexts()[0].setFont(new Font(20));
+        getTexts()[0].setFont(new Font(15));
         getTexts()[0].setX(this.getCorners()[0].getX() + 10);
-        getTexts()[0].setY(this.getCorners()[0].getY() + 25);
+        getTexts()[0].setY(this.getCorners()[0].getY() + 22);
         getTexts()[0].setWrappingWidth(50);
     }
 
@@ -130,6 +130,17 @@ public class OpenProcess extends SolidObject{
     public String getImagePath() {
         return "/com/openjfx/dfdeditor/VObjects/Process.png";
 
+    }
+
+    @Override
+    public int Check(){
+        int errors = super.Check();
+        if (stored_.isEmpty()) {
+            addWarningMsg("This open process is empty. The content should be implemented or the object switched to a basic Process.");
+            errors++;
+        }
+
+        return errors;
     }
 
     @Override

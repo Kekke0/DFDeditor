@@ -36,8 +36,13 @@ public class MultipliableObject extends SolidObject{
     public int Check(){
         int error = super.Check();
         int count = 0;
+
         for(VisualObject vo:getLayer().getVOs()){
-            if ((Objects.equals(vo.getName(), this.getName()) || Objects.equals(vo.getID(), this.getID())
+            if (vo == this){
+                continue;
+            }
+            if ((!(this.getName() == null || this.getName().isEmpty()) && (Objects.equals(vo.getName(), this.getName())) ||
+                    (!(this.getID() == null || this.getID().isEmpty()) && Objects.equals(vo.getID(), this.getID()))
                     && vo.getTypeString().equals(this.getTypeString()))) {
                 count++;
             }
